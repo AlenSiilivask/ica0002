@@ -9,3 +9,8 @@
     service:
         name: nginx
         state: started
+
+  - name: Copy index to www
+    ansible.builtin.copy:
+      src: /home/alen/Desktop/ica0002/roles/nginx/files/index.html
+      dest: /var/www/html
