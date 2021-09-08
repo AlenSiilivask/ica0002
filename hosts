@@ -1,1 +1,6 @@
 FIXME ansible_host=193.40.156.86 ansible_port=2322 ansible_ssh_user=ubuntu
+
+elvis-1  ansible_host=193.40.156.86 ansible_port=12122 ansible_user=ubuntu
+
+[web_servers]
+elvis-1
