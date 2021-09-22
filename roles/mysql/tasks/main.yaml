@@ -1,7 +1,9 @@
 ---
   - name: Install MySQL server
     apt:
-      name: mysql-server
+      name:
+        - mysql-server
+        - python3-pymysql
       state: latest
 
   - name: Start mysql
@@ -15,3 +17,7 @@
       src: override.cnf
       dest: /etc/mysql/mysql.conf.d/override.cnf
     notify: Restart mysql
+
+  - name: MySQL database
+    community.mysql.mysql_db:
+      name: "{{ mysql_database }}"
