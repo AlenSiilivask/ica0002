@@ -1,9 +1,23 @@
 ---
+  - name: Init
+    hosts:
+      - web_servers
+      - db_servers
+    become: yes
+    roles:
+      - init
+
+  - name: Database server
+    roles:
+      - mysql
+    become: yes
+    hosts:
+      - db_servers
+
   - name: Web server
     hosts: web_servers
     become: yes
     roles:
-      - users
       - agama
       - uwsgi
       - nginx
