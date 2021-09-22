@@ -12,6 +12,6 @@
 
   - name: Copy override to location
     copy:
-      src: override.cfg
+      src: override.cnf
       dest: /etc/mysql/mysql.conf.d/override.cnf
     notify: Restart mysql
