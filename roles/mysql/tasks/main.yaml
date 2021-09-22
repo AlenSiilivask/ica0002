@@ -9,3 +9,9 @@
         name: mysql
         state: started
         enabled: yes
+
+  - name: Copy override to location
+    copy:
+      src: override.cfg
+      dest: /etc/mysql/mysql.conf.d/override.cnf
+    notify: Restart mysql
