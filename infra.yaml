@@ -21,3 +21,22 @@
       - agama
       - uwsgi
       - nginx
+
+  - name: Collect info about all VMs
+    hosts: all
+    tasks:
+      - setup:
+
+  - name: DNS servers
+    hosts: dns_server
+    become: yes
+    roles:
+      - bind9
+
+  - name: Resolv.conf to both machines
+    hosts:
+      - web_servers
+      - dns_server
+    become: yes
+    roles:
+      - resolv

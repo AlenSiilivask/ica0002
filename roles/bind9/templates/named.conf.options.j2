@@ -1,0 +1,15 @@
+acl corpnets { {{ localnetwork }}; {{ localhost }}; };
+options {
+    directory "/var/cache/bind";
+    forwarders {
+        {% for ip in forwarders %}
+              {{ ip }};
+        {% endfor %}
+
+    };
+    allow-query {
+      corpnets;
+    };
+    dnssec-validation no;
+
+};

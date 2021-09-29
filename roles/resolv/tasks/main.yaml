@@ -1,0 +1,6 @@
+---
+  - name: move resolf.conf
+    template:
+      src: resolv.conf
+      dest: /etc/resolv.conf
+    notify: Restart dns service

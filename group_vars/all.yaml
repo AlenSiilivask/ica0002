@@ -1,4 +1,4 @@
-mysql_host: 192.168.42.72
+mysql_host: vm2
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -8,3 +8,21 @@ mysql_password: !vault |
           65653432353134373037613537383061393265376238356434323035316561366432383331376535
           3064653335323334380a363634643865373837613263323633303431636565333139626132633563
           3262
+
+
+forwarders:
+   - 1.1.1.1
+   - 8.8.8.8
+   - 9.9.9.9
+   - 9.9.9.10
+
+localnetwork: 192.168.42.0/24
+localhost: 127.0.0.0/8
+
+
+email: alensiilivask3.gmail.com
+
+vm1ip: 192.168.42.173
+vm2ip: 192.168.42.121
+
+zone: odns.io
