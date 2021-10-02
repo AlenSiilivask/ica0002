@@ -1,6 +1,11 @@
 ---
+  - name: stop systemd-resolved
+    service:
+      name: systemd-resolved
+      state: stopped
+      enabled: no
+
   - name: move resolf.conf
     template:
       src: resolv.conf
       dest: /etc/resolv.conf
-    notify: Restart dns service

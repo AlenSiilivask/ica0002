@@ -16,14 +16,14 @@
       dest: /etc/bind/named.conf.options
     notify: Restart bind9 service
 
+  - name: move db conf
+    template:
+      src: db.odns
+      dest: /var/cache/bind/db.odns
+    notify: restart bind with rndc
+
   - name: move conf.local
     template:
       src: named.conf.local.j2
       dest: /etc/bind/named.conf.local
     notify: Restart bind9 service
-
-  - name: move db conf
-    template:
-      src: db.odns
-      dest: /etc/bind/
-    notify: restart bind with rndc

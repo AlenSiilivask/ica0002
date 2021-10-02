@@ -5,4 +5,4 @@
       state: restarted
 
   - name: restart bind with rndc
-    command: rndc reload
+    shell: rndc reload

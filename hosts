@@ -1,6 +1,6 @@
 alen-1  ansible_host=193.40.156.86 ansible_port=17322 ansible_user=ubuntu
 
-alen-2 ansible_host=193.40.156.86 ansible_port=12122 ansible_user=ubuntu
+alen-2 ansible_host=193.40.156.86 ansible_port=14022 ansible_user=ubuntu
 
 [db_servers]
 alen-2
@@ -8,5 +8,5 @@ alen-2
 [web_servers]
 alen-1
 
-[dns_server]
+[dns_servers]
 alen-2

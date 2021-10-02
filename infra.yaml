@@ -7,6 +7,11 @@
     roles:
       - init
 
+  - name: Collect info about all VMs
+    hosts: all
+    tasks:
+      - setup:
+
   - name: Database server
     roles:
       - mysql
@@ -22,21 +27,14 @@
       - uwsgi
       - nginx
 
-  - name: Collect info about all VMs
-    hosts: all
-    tasks:
-      - setup:
-
   - name: DNS servers
-    hosts: dns_server
+    hosts: dns_servers
     become: yes
     roles:
-      - bind9
+      - bind
 
-  - name: Resolv.conf to both machines
-    hosts:
-      - web_servers
-      - dns_server
+  - name: resolved conf
+    hosts: all
     become: yes
     roles:
       - resolv
