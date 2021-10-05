@@ -1,5 +1,5 @@
 $TTL	604800
-odns.io.	IN	SOA	alensiilivask-2.odns.io. {{email}} (
+{{zone}}.	IN	SOA	alensiilivask-2.{{zone}}. {{email}} (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
@@ -7,7 +7,7 @@ odns.io.	IN	SOA	alensiilivask-2.odns.io. {{email}} (
 			 604800 )	; Negative Cache TTL
 ;
 {% for vm in groups['dns_servers'] %}
-odns.io.	IN	NS	{{ vm }}
+{{zone}}.	IN	NS	{{ vm }}
 {% endfor %}
 
 {% for vm in groups['all'] %}

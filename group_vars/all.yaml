@@ -20,7 +20,4 @@ localhost: 127.0.0.0/8
 
 email: alensiilivask3.gmail.com
 
-vm1ip: 192.168.42.31
-vm2ip: 192.168.42.54
-
 zone: odns.io
