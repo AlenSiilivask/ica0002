@@ -5,8 +5,8 @@
         state: latest
 
   - name: Copy config
-    copy:
-      src: /home/alen/Desktop/ica0002/roles/nginx/files/default
+    template:
+      src: default.j2
       dest: /etc/nginx/sites-enabled/default
     notify: Restart nginx service
 

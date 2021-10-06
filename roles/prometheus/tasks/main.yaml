@@ -2,3 +2,21 @@
   - name: Install prometheus
     apt:
       name: prometheus
+
+  - name: Start prometheus
+    service:
+      name: prometheus
+      state: started
+      enabled: yes
+
+  - name: Move prometheus conf
+    template:
+      src: prometheus.yml
+      dest: /etc/prometheus/prometheus.yml
+    notify: Restart prometheus
+
+  - name: Move prometheus ARGS
+    template:
+      src: prometheus
+      dest: /etc/default/prometheus
+    notify: Restart prometheus
