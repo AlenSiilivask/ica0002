@@ -1,0 +1,10 @@
+---
+  - name: Get node_exporters
+    apt:
+      name: prometheus-node-exporter
+
+  - name: Node_exporters are started
+    service:
+        name: prometheus-node-exporter
+        state: started
+        enabled: yes

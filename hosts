@@ -10,3 +10,6 @@ alen-1
 
 [dns_servers]
 alen-2
+
+[prometheus_server]
+alen-1

@@ -38,3 +38,15 @@
     become: yes
     roles:
       - resolv
+
+  - name: Install node_exporters
+    hosts: all
+    become: yes
+    roles:
+      - node_exporter
+
+  - name: Install prometheus
+    hosts: prometheus_server
+    become: yes
+    roles:
+      - prometheus
