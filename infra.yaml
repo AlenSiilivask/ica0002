@@ -1,8 +1,6 @@
 ---
   - name: Init
-    hosts:
-      - web_servers
-      - db_servers
+    hosts: all
     become: yes
     roles:
       - init
@@ -25,6 +23,11 @@
     roles:
       - agama
       - uwsgi
+
+  - name: Nginx to all vms
+    hosts: all
+    become: yes
+    roles:
       - nginx
 
   - name: DNS servers
@@ -32,12 +35,6 @@
     become: yes
     roles:
       - bind
-
-  - name: resolved conf
-    hosts: all
-    become: yes
-    roles:
-      - resolv
 
   - name: Install node_exporters
     hosts: all
@@ -50,3 +47,9 @@
     become: yes
     roles:
       - prometheus
+
+  - name: resolved conf
+    hosts: all
+    become: yes
+    roles:
+      - resolv

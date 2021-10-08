@@ -1,0 +1,3 @@
+scrape_duration_seconds{job="prometheus"}
+
+rate(node_netstat_Tcp_InSegs[10m])
