@@ -1,3 +1,44 @@
 scrape_duration_seconds{job="prometheus"}
 
 rate(node_netstat_Tcp_InSegs[10m])
+
+
+100 - (avg by (instance) (rate(node_cpu_seconds_total{job="linux",mode="idle"}[30m])) * 100)
+100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[30m])) * 100)
+
+
+
+
+
+
+CPU#  100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[30m])) * 100)
+
+MEM# node_memory_MemTotal_bytes - node_memory_MemFree_bytes
+
+
+BIND# rate(bind_resolver_queries_total{type="A"}[30m])
+bind_up
+
+MYSQL# rate(mysql_global_status_commands_total{command="select"}[1m])
+mysql_up
+
+NGINX# rate(nginx_http_requests_total[5m])
+
+
+
+apiVersion: 1
+
+datasources:
+ - name: Prometheus
+   type: Prometheus
+   access: proxy
+   orgId: 1
+   url: http://{{ansible_host}}:{{port_first + 58}}/prometheus
+
+   password:
+   user:
+   database:
+
+   isDefault: true
+   version: 1
+   editable: true

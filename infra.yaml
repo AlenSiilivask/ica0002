@@ -29,12 +29,14 @@
     become: yes
     roles:
       - nginx
+      - nginx_exporter
 
   - name: DNS servers
     hosts: dns_servers
     become: yes
     roles:
       - bind
+      - bind_exporter
 
   - name: Install node_exporters
     hosts: all
@@ -47,6 +49,19 @@
     become: yes
     roles:
       - prometheus
+
+  - name: Database server
+    roles:
+      - mysql_exporter
+    become: yes
+    hosts:
+      - db_servers
+
+  - name: Install grafana
+    hosts: grafana
+    become: yes
+    roles:
+      - grafana
 
   - name: resolved conf
     hosts: all

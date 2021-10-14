@@ -4,14 +4,14 @@
         name: nginx
         state: latest
 
-  - name: Copy config
-    template:
-      src: default.j2
-      dest: /etc/nginx/sites-enabled/default
-    notify: Restart nginx service
-
   - name: Start nginx
     service:
         name: nginx
         state: started
         enabled: yes
+
+  - name: Copy config
+    template:
+      src: default.j2
+      dest: /etc/nginx/sites-enabled/default
+    notify: Restart nginx service handler

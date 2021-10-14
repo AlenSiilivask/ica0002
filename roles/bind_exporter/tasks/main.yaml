@@ -1,0 +1,11 @@
+---
+  - name: Install bind9 exporter
+    apt:
+      name: prometheus-bind-exporter
+      state: latest
+
+  - name: Start bind-exporter
+    service:
+        name: prometheus-bind-exporter
+        state: started
+        enabled: yes
