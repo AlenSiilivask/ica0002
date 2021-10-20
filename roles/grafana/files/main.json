@@ -8,15 +8,22 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
@@ -26,7 +33,7 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -55,9 +62,10 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -118,25 +126,17 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [
             {
-              "from": "",
-              "id": 0,
-              "operator": "",
-              "text": "Down",
-              "to": "",
-              "type": 1,
-              "value": "0"
-            },
-            {
-              "from": "",
-              "id": 1,
-              "operator": "",
-              "text": "UP",
-              "to": "",
-              "type": 1,
-              "value": "1"
+              "options": {
+                "0": {
+                  "text": "Down"
+                },
+                "1": {
+                  "text": "UP"
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -175,10 +175,13 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.0",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "expr": "mysql_up",
@@ -200,24 +203,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "decmbytes"
+          "links": [],
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -246,10 +233,10 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.0.0",
+      "pluginVersion": "8.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -286,7 +273,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -315,27 +302,7 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "dark-red",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 1
-              }
-            ]
-          }
+          "links": []
         },
         "overrides": []
       },
@@ -362,10 +329,10 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.0.0",
+      "pluginVersion": "8.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -429,25 +396,17 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [
             {
-              "from": "",
-              "id": 0,
-              "operator": "",
-              "text": "Down",
-              "to": "",
-              "type": 1,
-              "value": "0"
-            },
-            {
-              "from": "",
-              "id": 1,
-              "operator": "",
-              "text": "UP",
-              "to": "",
-              "type": 1,
-              "value": "1"
+              "options": {
+                "0": {
+                  "text": "Down"
+                },
+                "1": {
+                  "text": "UP"
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -486,10 +445,13 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.0",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "expr": "bind_up",
@@ -508,7 +470,6 @@
       "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -539,12 +500,14 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.0.0",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[30m])) * 100)",
@@ -570,27 +533,7 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "dark-red",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 1
-              }
-            ]
-          }
+          "links": []
         },
         "overrides": []
       },
@@ -617,10 +560,10 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.0.0",
+      "pluginVersion": "8.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -684,25 +627,17 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [
             {
-              "from": "",
-              "id": 0,
-              "operator": "",
-              "text": "Down",
-              "to": "",
-              "type": 1,
-              "value": "0"
-            },
-            {
-              "from": "",
-              "id": 1,
-              "operator": "",
-              "text": "UP",
-              "to": "",
-              "type": 1,
-              "value": "1"
+              "options": {
+                "0": {
+                  "text": "Down"
+                },
+                "1": {
+                  "text": "UP"
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -741,10 +676,13 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.0",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "expr": "nginx_up",
@@ -760,7 +698,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 25,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -786,5 +724,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "xWQ-CeD7z",
-  "version": 2
+  "version": 1
 }

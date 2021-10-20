@@ -2,7 +2,6 @@
   - name: Install mysql-exporter
     apt:
       name: prometheus-mysqld-exporter
-      state: latest
 
   - name: Move mysql_exporter conf
     template:
@@ -10,8 +9,12 @@
       dest: /var/lib/prometheus/.my.cnf
     notify: mysql_exporter conf
 
-  - name: Start mysql-exporter
+  - name: Pause for 10 sec to find configuration
+    pause:
+      seconds: 10
+
+  - name: Start mysql-exporter111
     service:
-        name: prometheus-mysqld-exporter
-        # state: started
-        enabled: yes
+      name: prometheus-mysqld-exporter
+      state: started
+      enabled: yes
