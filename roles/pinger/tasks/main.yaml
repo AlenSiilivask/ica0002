@@ -1,0 +1,33 @@
+---
+  - name: Add the user "pinger"
+    ansible.builtin.user:
+      name: pinger
+
+  - name: Create pinger configuration directory
+    ansible.builtin.file:
+      path: /etc/pinger
+      state: directory
+      mode: 0751
+
+  - name: Create pinger configuration
+    ansible.builtin.copy:
+      src: pinger.conf
+      dest: /etc/pinger/pinger.conf
+    notify:
+      - Restart pinger
+
+  - name: Setup pinger script
+    ansible.builtin.copy:
+      src: pinger.sh
+      dest: /usr/local/bin/pinger
+      mode: 0777
+    notify:
+      - Restart pinger
+
+  - name: Create pinger service
+    ansible.builtin.copy:
+      src: pinger.service
+      dest: /etc/systemd/system/pinger.service
+    notify:
+      - Reload systemd
+      - Restart pinger

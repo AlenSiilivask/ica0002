@@ -17,3 +17,12 @@ alen-1
 
 [grafana]
 alen-2
+
+[influxdb]
+alen-1
+
+[pinger]
+alen-1
+
+[telegraf]
+alen-1

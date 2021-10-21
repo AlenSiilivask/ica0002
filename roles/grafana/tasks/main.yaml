@@ -26,8 +26,14 @@
 
   - name: Setup Default datasource
     template:
-      src: sample.yaml.j2
-      dest: /etc/grafana/provisioning/datasources/sample.yaml
+      src: prometheus.yaml.j2
+      dest: /etc/grafana/provisioning/datasources/prometheus.yaml
+    notify: restart grafana
+
+  - name: Setup second datasource
+    template:
+      src: influx.yaml.j2
+      dest: /etc/grafana/provisioning/datasources/influx.yaml
     notify: restart grafana
 
   - name: Copy conf for dashboards

@@ -63,6 +63,20 @@
     roles:
       - grafana
 
+  - name: Install influxDB
+    hosts:
+      - influxdb
+    become: yes
+    roles:
+      - influxdb
+
+  - name: Create service
+    hosts:
+      - pinger
+    become: yes
+    roles:
+      - pinger
+
   - name: resolved conf
     hosts: all
     become: yes
