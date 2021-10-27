@@ -4,6 +4,7 @@
     become: yes
     roles:
       - init
+      - backup
 
   - name: Collect info about all VMs
     hosts: all
@@ -76,6 +77,20 @@
     become: yes
     roles:
       - pinger
+
+  - name: Install rsyslog
+    hosts:
+      - all
+    become: yes
+    roles:
+      - rsyslog
+
+  - name: Install influxDB exporter
+    hosts:
+      - influxdb
+    become: yes
+    roles:
+      - influxdb_exporter
 
   - name: resolved conf
     hosts: all

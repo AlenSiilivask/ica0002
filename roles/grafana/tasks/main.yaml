@@ -24,16 +24,22 @@
       dest: /etc/grafana/grafana.ini
     notify: restart grafana
 
-  - name: Setup Default datasource
+  - name: Setup prometheus datasource
     template:
       src: prometheus.yaml.j2
       dest: /etc/grafana/provisioning/datasources/prometheus.yaml
     notify: restart grafana
 
-  - name: Setup second datasource
+  - name: Setup influxDB datasource
     template:
       src: influx.yaml.j2
       dest: /etc/grafana/provisioning/datasources/influx.yaml
+    notify: restart grafana
+  
+  - name: Setup telegraf datasource
+    template:
+      src: telegraf.yaml.j2
+      dest: /etc/grafana/provisioning/datasources/telegraf.yaml
     notify: restart grafana
 
   - name: Copy conf for dashboards
@@ -45,4 +51,10 @@
     copy:
       src: main.json
       dest: /etc/grafana/provisioning/dashboards/main.json
+    notify: restart grafana
+
+  - name: Setup second dashboard
+    copy:
+      src: syslog.json
+      dest: /etc/grafana/provisioning/dashboards/syslog.json
     notify: restart grafana

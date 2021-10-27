@@ -11,6 +11,12 @@
     apt:
       name: influxdb
 
+  - name: InfluxDB configuration
+    copy:
+      src: influxdb.conf
+      dest: /etc/influxdb/influxdb.conf
+    notify: restart InfluxDB
+
   - name: Start influxDB
     service:
         name: influxdb
@@ -20,6 +26,12 @@
   - name: Install telegraf
     apt:
       name: telegraf
+
+  - name: Telegraf configuration
+    copy:
+      src: telegraf.conf
+      dest: /etc/telegraf/telegraf.conf
+    notify: Restart telegraf
 
   - name: Start telegraf
     service:

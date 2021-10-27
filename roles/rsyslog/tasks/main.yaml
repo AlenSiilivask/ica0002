@@ -1,0 +1,16 @@
+---
+  - name: Install rsyslog
+    apt:
+      name: rsyslog
+
+  - name: Copy telegraf conf for rsyslog
+    template:
+      src: 10-telegraf.conf.j2
+      dest: /etc/rsyslog.d/10-telegraf.conf
+    notify: Restart rsyslog
+
+  - name: Ensure that rsyslog is running
+    service:
+      name: rsyslog
+      state: started
+      enabled: yes
