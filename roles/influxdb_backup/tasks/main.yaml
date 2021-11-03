@@ -1,0 +1,8 @@
+---
+  - name: Ensure that dir is created
+    file:
+      path: /home/backup/influxdb
+      owner: backup
+      group: backup
+      mode: 0644
+      state: directory

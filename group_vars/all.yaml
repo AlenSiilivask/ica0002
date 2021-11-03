@@ -22,6 +22,8 @@ email: alensiilivask3.gmail.com
 
 zone: odns.io
 
+backup_server_ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
+
 public_ip: 193.40.156.86:14380
 
 mysql_exporter_user: exporter
