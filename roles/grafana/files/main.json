@@ -22,7 +22,6 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -159,10 +158,12 @@
             {
               "options": {
                 "0": {
-                  "text": "Down"
+                  "index": 1,
+                  "text": "👎"
                 },
                 "1": {
-                  "text": "UP"
+                  "index": 0,
+                  "text": "👌"
                 }
               },
               "type": "value"
@@ -210,7 +211,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -269,7 +270,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -369,7 +370,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -434,10 +435,12 @@
             {
               "options": {
                 "0": {
-                  "text": "Down"
+                  "index": 1,
+                  "text": "👎"
                 },
                 "1": {
-                  "text": "UP"
+                  "index": 0,
+                  "text": "👌"
                 }
               },
               "type": "value"
@@ -485,7 +488,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "mysql_up",
@@ -541,7 +544,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[30m])) * 100)",
@@ -596,7 +599,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -664,10 +667,12 @@
             {
               "options": {
                 "0": {
-                  "text": "Down"
+                  "index": 1,
+                  "text": "👎"
                 },
                 "1": {
-                  "text": "UP"
+                  "index": 0,
+                  "text": "👌"
                 }
               },
               "type": "value"
@@ -715,7 +720,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "bind_up",
@@ -936,7 +941,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1004,10 +1009,12 @@
             {
               "options": {
                 "0": {
-                  "text": "Down"
+                  "index": 1,
+                  "text": "👎"
                 },
                 "1": {
-                  "text": "UP"
+                  "index": 0,
+                  "text": "👌"
                 }
               },
               "type": "value"
@@ -1055,7 +1062,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "nginx_up",
