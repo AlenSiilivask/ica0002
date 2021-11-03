@@ -6,3 +6,17 @@
       group: backup
       mode: 0644
       state: directory
+
+  - name: conf file
+    template:
+      src: .my.cnf.j2
+      dest: /home/backup/.my.cnf
+
+  - name: MySQL-exporter user
+    community.mysql.mysql_user:
+      name: "{{ mysql_exporter_user_backup }}"
+      password: "{{ mysql_exporter_pass_backup }}"
+      host: "%"
+      priv:
+        '*.*': 'LOCK TABLES,SELECT'
+      login_unix_socket: /var/run/mysqld/mysqld.sock
