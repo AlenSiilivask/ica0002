@@ -4,7 +4,7 @@
       path: /home/backup/mysql
       owner: backup
       group: backup
-      mode: 0644
+      mode: 0755
       state: directory
 
   - name: conf file
@@ -20,3 +20,16 @@
       priv:
         '*.*': 'LOCK TABLES,SELECT'
       login_unix_socket: /var/run/mysqld/mysqld.sock
+
+  - name: conf file
+    template:
+      src: mysql-backup.j2
+      dest: /etc/cron.d/mysql-backup
+      
+  - name: Ensure that cron file is created
+    file:
+      path: /etc/cron.d/mysql-backup
+      owner: backup
+      group: backup
+      mode: 0755
+      state: file
