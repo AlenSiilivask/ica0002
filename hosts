@@ -1,4 +1,4 @@
-alen-1  ansible_host=193.40.156.86 ansible_port=17322 ansible_user=ubuntu
+alen-1  ansible_host=193.40.156.86 ansible_port=5822 ansible_user=ubuntu
 
 
 alen-2 ansible_host=193.40.156.86 ansible_port=13722 ansible_user=ubuntu

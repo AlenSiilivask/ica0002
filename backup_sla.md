@@ -17,8 +17,8 @@ Database services - **MySQL** and **InfluxDB**. The database services contain us
 Incremental backups are done automatically every day at 00:35. Incremental backup stores only the difference in the data relative to the last incremental backup.  
 First incremental backup stores difference from the last created full backup.  
 Full backups contain all data from services that are backed up and they are done on every 4 weeks (28 days as not all the months have 28+ days).  
-Backpus are retained for 28 days, only 2 versions can be stored at the same time.  
-The oldest backup is deleted at 00:40 on the 28th day of every month.  
+Backups are retained for 28 days, only 28 versions of backups can be stored at the same time.  
+The backups that are older than 29 days are deleted at 03:00 every Saturday.
 
 ## **Usability**
 Usability of the last backup is checked every 7 days and tested in  virtual environment setup, simulating our real infrastructure.
