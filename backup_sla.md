@@ -1,4 +1,4 @@
-#**Backup services SLA**
+#Backup services SLA
 
 Descriptions of backup approaches contain information on specific backup attributes, such as:
 
