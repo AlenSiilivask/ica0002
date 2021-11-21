@@ -6,3 +6,10 @@
       group: backup
       mode: 0755
       state: directory
+
+  - name: copy influxdb_backup to server
+    ansible.builtin.template:
+      src: influxdb-backup.j2
+      dest: /etc/cron.d/influxdb-backup
+      owner: root
+      group: root
