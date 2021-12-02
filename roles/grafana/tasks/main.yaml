@@ -35,7 +35,7 @@
       src: influx.yaml.j2
       dest: /etc/grafana/provisioning/datasources/influx.yaml
     notify: restart grafana
-  
+
   - name: Setup telegraf datasource
     template:
       src: telegraf.yaml.j2
@@ -57,4 +57,10 @@
     copy:
       src: syslog.json
       dest: /etc/grafana/provisioning/dashboards/syslog.json
+    notify: restart grafana
+
+  - name: Setup mysql dashboard
+    copy:
+      src: mysql.json
+      dest: /etc/grafana/provisioning/dashboards/mysql.json
     notify: restart grafana

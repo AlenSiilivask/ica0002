@@ -9,6 +9,12 @@
       dest: /var/lib/prometheus/.my.cnf
     notify: mysql_exporter conf
 
+  - name: Move prometheus-mysqld-exporter conf
+    template:
+      src: prometheus-mysqld-exporter
+      dest: /etc/default/prometheus-mysqld-exporter
+    notify: mysql_exporter conf
+
   - name: Pause for 10 sec to find configuration
     pause:
       seconds: 10

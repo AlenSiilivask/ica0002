@@ -13,7 +13,7 @@
         enabled: yes
 
   - name: Copy override to location
-    copy:
+    template:
       src: override.cnf
       dest: /etc/mysql/mysql.conf.d/override.cnf
     notify: Restart mysql
@@ -39,3 +39,21 @@
       priv:
         '*.*': 'PROCESS,REPLICATION CLIENT,SELECT'
       login_unix_socket: /var/run/mysqld/mysqld.sock
+
+  - name: MySQL replication user
+    community.mysql.mysql_user:
+      name: "{{ mysql_replication_user }}"
+      password: "{{ mysql_replication_password }}"
+      host: "%"
+      priv: "*.*:REPLICATION SLAVE"
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+
+  - name: readonly
+    community.mysql.mysql_variables:
+      variable: read_only
+      value: "{{ 'OFF' if inventory_hostname == mysql_host else 'ON' }}"
+      mode: persist
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+    notify:
+    - Reset MySQL source
+    - Reset MySQL replica
