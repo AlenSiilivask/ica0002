@@ -23,6 +23,7 @@
     hosts: web_servers
     become: yes
     roles:
+      - docker
       - agama
       - uwsgi
 
@@ -63,6 +64,7 @@
     hosts: grafana
     become: yes
     roles:
+      - docker
       - grafana
 
   - name: Install influxDB

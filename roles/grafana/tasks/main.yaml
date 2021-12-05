@@ -1,66 +1,47 @@
 ---
-  - name: Add apt key for grafana
-    ansible.builtin.apt_key:
-      url: https://packages.grafana.com/gpg.key
+  - name: Create grafana directories
+    ansible.builtin.file:
+      name: "/opt/grafana/provisioning/{{ item }}"
+      recurse: yes
+      state: directory
+    loop:
+      - dashboards
+      - datasources
 
-  - name: Add specified repository into sources list
-    ansible.builtin.apt_repository:
-      repo: deb https://packages.grafana.com/oss/deb stable main
+  - name: Copy grafana.ini to server
+    ansible.builtin.template:
+      src: roles/grafana/templates/grafana.ini.j2
+      dest: /opt/grafana/grafana.ini
 
-  - name: Install grafana
-    apt:
+  - name: Copy prometheus datasource to server
+    ansible.builtin.template:
+      src: roles/grafana/templates/prometheus.yaml.j2
+      dest: /opt/grafana/provisioning/datasources/prometheus.yaml
+
+  - name: Copy influxdb datasource to server
+    ansible.builtin.template:
+      src: roles/grafana/templates/influxdb.yaml.j2
+      dest: /opt/grafana/provisioning/datasources/influxdb.yaml
+
+  - name: Copy telegraf datasource to server
+    ansible.builtin.template:
+      src: roles/grafana/templates/telegraf.yaml.j2
+      dest: /opt/grafana/provisioning/datasources/telegraf.yaml
+
+  - name: Copy dashboards to server
+    ansible.builtin.copy:
+      src: "roles/grafana/files/{{ item }}"
+      dest: "/opt/grafana/provisioning/dashboards/{{ item }}"
+    loop:
+      - default.yaml
+      - main.json
+      - mysql.json
+      - syslog.json
+
+  - name: install grafana docker container
+    community.docker.docker_container:
       name: grafana
-    notify: Reset Grafana Password
-
-  - name: Start grafana
-    service:
-        name: grafana-server
-        state: started
-        enabled: yes
-
-  - name: Move Grafana conf
-    template:
-      src: grafana.ini.j2
-      dest: /etc/grafana/grafana.ini
-    notify: restart grafana
-
-  - name: Setup prometheus datasource
-    template:
-      src: prometheus.yaml.j2
-      dest: /etc/grafana/provisioning/datasources/prometheus.yaml
-    notify: restart grafana
-
-  - name: Setup influxDB datasource
-    template:
-      src: influx.yaml.j2
-      dest: /etc/grafana/provisioning/datasources/influx.yaml
-    notify: restart grafana
-
-  - name: Setup telegraf datasource
-    template:
-      src: telegraf.yaml.j2
-      dest: /etc/grafana/provisioning/datasources/telegraf.yaml
-    notify: restart grafana
-
-  - name: Copy conf for dashboards
-    template:
-      src: dashboard.yaml.j2
-      dest: /etc/grafana/provisioning/dashboards/sample.yaml
-
-  - name: Setup dashboards
-    copy:
-      src: main.json
-      dest: /etc/grafana/provisioning/dashboards/main.json
-    notify: restart grafana
-
-  - name: Setup second dashboard
-    copy:
-      src: syslog.json
-      dest: /etc/grafana/provisioning/dashboards/syslog.json
-    notify: restart grafana
-
-  - name: Setup mysql dashboard
-    copy:
-      src: mysql.json
-      dest: /etc/grafana/provisioning/dashboards/mysql.json
-    notify: restart grafana
+      image: grafana/grafana
+      volumes: /opt/grafana:/etc/grafana
+      container_default_behavior: no_defaults
+      published_ports: "{{ grafana_port }}:3000"

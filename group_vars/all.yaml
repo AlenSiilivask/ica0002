@@ -1,4 +1,4 @@
-mysql_host: alen-1
+mysql_host: alen-2
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -66,5 +66,8 @@ mysql_replication_password: !vault |
           6336323736643162650a393564316265633262656530396561633366323737346261393161383032
           6264
 
-
 node_id: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'].split('.')[-1] }}"
+
+grafana_port: 3001
+
+agama_port: 8001
