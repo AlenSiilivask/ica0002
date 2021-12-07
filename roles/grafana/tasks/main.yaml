@@ -1,47 +1,57 @@
 ---
   - name: Create grafana directories
     ansible.builtin.file:
-      name: "/opt/grafana/provisioning/{{ item }}"
-      recurse: yes
+      path: "/opt/grafana/provisioning/{{ item }}"
       state: directory
+      recurse: yes
     loop:
       - dashboards
       - datasources
 
-  - name: Copy grafana.ini to server
-    ansible.builtin.template:
-      src: roles/grafana/templates/grafana.ini.j2
-      dest: /opt/grafana/grafana.ini
-
-  - name: Copy prometheus datasource to server
-    ansible.builtin.template:
-      src: roles/grafana/templates/prometheus.yaml.j2
+  - name: Setup prometheus datasource
+    template:
+      src: prometheus.yaml.j2
       dest: /opt/grafana/provisioning/datasources/prometheus.yaml
 
-  - name: Copy influxdb datasource to server
-    ansible.builtin.template:
-      src: roles/grafana/templates/influxdb.yaml.j2
-      dest: /opt/grafana/provisioning/datasources/influxdb.yaml
+  - name: Setup influxDB datasource
+    template:
+      src: influx.yaml.j2
+      dest: /opt/grafana/provisioning/datasources/influx.yaml
 
-  - name: Copy telegraf datasource to server
-    ansible.builtin.template:
-      src: roles/grafana/templates/telegraf.yaml.j2
+  - name: Setup telegraf datasource
+    template:
+      src: telegraf.yaml.j2
       dest: /opt/grafana/provisioning/datasources/telegraf.yaml
 
-  - name: Copy dashboards to server
-    ansible.builtin.copy:
-      src: "roles/grafana/files/{{ item }}"
-      dest: "/opt/grafana/provisioning/dashboards/{{ item }}"
-    loop:
-      - default.yaml
-      - main.json
-      - mysql.json
-      - syslog.json
+  - name: Copy conf for dashboards
+    template:
+      src: dashboard.yaml.j2
+      dest: /opt/grafana/provisioning/dashboards/sample.yaml
 
-  - name: install grafana docker container
+  - name: Setup dashboards
+    copy:
+      src: main.json
+      dest: /opt/grafana/provisioning/dashboards/main.json
+
+  - name: Setup second dashboard
+    copy:
+      src: syslog.json
+      dest: /opt/grafana/provisioning/dashboards/syslog.json
+
+  - name: Setup mysql dashboard
+    copy:
+      src: mysql.json
+      dest: /opt/grafana/provisioning/dashboards/mysql.json
+
+  - name: Copy config for grafana
+    template:
+        src: grafana.ini.j2
+        dest: /opt/grafana/grafana.ini
+
+  - name: Install and start grafana in Docker
     community.docker.docker_container:
       name: grafana
       image: grafana/grafana
       volumes: /opt/grafana:/etc/grafana
-      container_default_behavior: no_defaults
       published_ports: "{{ grafana_port }}:3000"
+      container_default_behavior: no_defaults

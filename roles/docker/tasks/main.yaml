@@ -1,15 +1,12 @@
-- name: Install docker
-  ansible.builtin.apt:
-    name: docker.io
-    state: latest
+---
+  - name: Install docker package
+    ansible.builtin.apt:
+      name:
+        - docker.io
+        - python3-docker
 
-- name: Install docker dependencies
-  ansible.builtin.apt:
-    name: python3-docker
-    state: latest
-
-- name: Check if docker is running and enabled
-  ansible.builtin.service:
-    name: docker
-    state: started
-    enabled: yes
+  - name: Docker started
+    ansible.builtin.service:
+      name: docker
+      state: started
+      enabled: yes

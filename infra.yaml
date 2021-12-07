@@ -19,13 +19,36 @@
     hosts:
       - db_servers
 
+  - name: DNS servers
+    hosts: dns_servers
+    become: yes
+    roles:
+      - bind
+      - bind_exporter
+
+  - name: resolved conf
+    hosts: all
+    become: yes
+    roles:
+      - resolv
+
+  - name: Doker bug fix
+    hosts: all
+    become: yes
+    roles:
+      - fix_docker
+
+  - name: Docker
+    hosts: all
+    become: yes
+    roles:
+      - docker
+
   - name: Web server
     hosts: web_servers
     become: yes
     roles:
-      - docker
       - agama
-      - uwsgi
 
   - name: Nginx to all vms
     hosts: all
@@ -33,13 +56,6 @@
     roles:
       - nginx
       - nginx_exporter
-
-  - name: DNS servers
-    hosts: dns_servers
-    become: yes
-    roles:
-      - bind
-      - bind_exporter
 
   - name: Install node_exporters
     hosts: all
@@ -64,7 +80,6 @@
     hosts: grafana
     become: yes
     roles:
-      - docker
       - grafana
 
   - name: Install influxDB
@@ -95,9 +110,3 @@
     become: yes
     roles:
       - influxdb_exporter
-
-  - name: resolved conf
-    hosts: all
-    become: yes
-    roles:
-      - resolv
