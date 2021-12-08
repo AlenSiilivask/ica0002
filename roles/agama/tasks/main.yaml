@@ -24,3 +24,12 @@
       container_default_behavior: no_defaults
       env:
        AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@{{ mysql_host }}/{{ mysql_database }}
+
+  - name: start second agama container
+    community.docker.docker_container:
+      name: second-agama
+      image: agama
+      published_ports: "{{ agama_port + 1 }}:8000"
+      container_default_behavior: no_defaults
+      env:
+       AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@{{ mysql_host }}/{{ mysql_database }}
