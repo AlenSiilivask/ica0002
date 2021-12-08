@@ -27,3 +27,11 @@ alen-1
 
 [telegraf]
 alen-1
+
+[keepalived]
+alen-1
+alen-2
+
+[haproxy]
+alen-1
+alen-2

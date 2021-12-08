@@ -11,6 +11,20 @@
     tasks:
       - setup:
 
+  - name: Install haproxy
+    hosts:
+      - haproxy
+    become: yes
+    roles:
+      - haproxy
+
+  - name: Install keepalived
+    hosts:
+      - keepalived
+    become: yes
+    roles:
+      - keepalived
+
   - name: Database server
     roles:
       - mysql

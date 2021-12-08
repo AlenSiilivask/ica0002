@@ -1,0 +1,20 @@
+---
+  - name: Install haproxy
+    apt:
+      name: haproxy
+
+  - name: Copy haproxy config
+    template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+    notify: Restart haproxy
+
+  - name: Install haproxy prometheus exporter
+    apt:
+      name: prometheus-haproxy-exporter
+
+  - name: Move prometheus-mysqld-exporter conf
+    template:
+      src: prometheus-haproxy-exporter
+      dest: /etc/default/prometheus-haproxy-exporter
+    notify: prometheus-haproxy-exporter
