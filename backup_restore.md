@@ -2,12 +2,12 @@
 
 ## **Descriptions of the backup process.**
 
-###**Installation and configuration of our infrastructure using ansible playbook**:
+### **Installation and configuration of our infrastructure using ansible playbook**:
 ```
 ansible-playbook infra.yaml
 ```
 
-###**MySQL data restoration from backup**:
+### **MySQL data restoration from backup**:
 To download the MySQL backup use backup user:
 ```
 duplicity --no-encryption restore rsync://AlenSiilivask@backup.odns.io//home/AlenSiilivask/ /home/backup/restore/
@@ -17,7 +17,7 @@ duplicity --no-encryption restore rsync://AlenSiilivask@backup.odns.io//home/Ale
 mysql agama < /home/backup/restore/agama.sql
 ```
 
-###**InfluxBD data restoration from backup**
+### **InfluxBD data restoration from backup**
 To download the InfluxDB backup use backup user:
 ```
 duplicity --no-encryption restore rsync://AlenSiilivask@backup.odns.io//home/AlenSiilivask/ /home/backup/restore/
