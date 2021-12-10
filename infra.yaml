@@ -11,20 +11,6 @@
     tasks:
       - setup:
 
-  - name: Install haproxy
-    hosts:
-      - haproxy
-    become: yes
-    roles:
-      - haproxy
-
-  - name: Install keepalived
-    hosts:
-      - keepalived
-    become: yes
-    roles:
-      - keepalived
-
   - name: Database server
     roles:
       - mysql
@@ -124,3 +110,17 @@
     become: yes
     roles:
       - influxdb_exporter
+
+  - name: Install haproxy
+    hosts:
+      - haproxy
+    become: yes
+    roles:
+      - haproxy
+
+  - name: Install keepalived
+    hosts:
+      - keepalived
+    become: yes
+    roles:
+      - keepalived
