@@ -20,6 +20,7 @@
     community.docker.docker_container:
       name: agama
       image: agama
+      restart_policy: always
       published_ports: "{{ agama_port }}:8000"
       container_default_behavior: no_defaults
       env:
@@ -29,6 +30,7 @@
     community.docker.docker_container:
       name: second-agama
       image: agama
+      restart_policy: always
       published_ports: "{{ agama_port + 1 }}:8000"
       container_default_behavior: no_defaults
       env:
