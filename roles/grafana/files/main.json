@@ -1017,7 +1017,23 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "dark-red",
+                  "index": 1,
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1082,7 +1098,23 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "dark-red",
+                  "index": 1,
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1104,8 +1136,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 15,
-        "w": 24,
+        "h": 6,
+        "w": 8,
         "x": 0,
         "y": 24
       },
@@ -1132,9 +1164,9 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "haproxy_server_up",
+          "expr": "haproxy_server_up{instance=\"alen-1:9101\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "Alen-1",
           "refId": "A"
         }
       ],
@@ -1147,7 +1179,23 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "dark-red",
+                  "index": 1,
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1169,12 +1217,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 24,
-        "x": 0,
-        "y": 39
+        "h": 6,
+        "w": 6,
+        "x": 8,
+        "y": 24
       },
-      "id": 26,
+      "id": 28,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -1197,17 +1245,197 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "keepalived_vrrp_state",
+          "expr": "haproxy_server_up{instance=\"alen-2:9101\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "Alen-2",
           "refId": "A"
         }
       ],
-      "title": "keepalived status",
+      "title": "Haproxy backend status",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "dark-red",
+                  "index": 2,
+                  "text": "DEAD"
+                },
+                "1": {
+                  "color": "dark-orange",
+                  "index": 1,
+                  "text": "SLAVE"
+                },
+                "2": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "MASTER"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "color": "dark-red",
+                  "index": 3,
+                  "text": "DEAD"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 14,
+        "y": 24
+      },
+      "id": 26,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "8.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "keepalived_vrrp_state{instance=\"alen-1:9165\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Alen-2",
+          "refId": "A"
+        }
+      ],
+      "title": "Alen-1 keepalived status",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "dark-red",
+                  "index": 2,
+                  "text": "DEAD"
+                },
+                "1": {
+                  "color": "dark-orange",
+                  "index": 1,
+                  "text": "SLAVE"
+                },
+                "2": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "MASTER"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "color": "dark-red",
+                  "index": 3,
+                  "text": "DEAD"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 19,
+        "y": 24
+      },
+      "id": 27,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "8.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "keepalived_vrrp_state{instance=\"alen-2:9165\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Alen-2",
+          "refId": "A"
+        }
+      ],
+      "title": "Alen-2 keepalived status",
       "type": "stat"
     }
   ],
-  "refresh": false,
+  "refresh": "10s",
   "schemaVersion": 33,
   "style": "dark",
   "tags": [],

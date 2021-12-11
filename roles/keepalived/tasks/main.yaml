@@ -2,11 +2,6 @@
   - name: Install keepalived
     apt:
       name: keepalived
-  #
-  # - name: ensure that keepalived folder is created
-  #   file:
-  #     path: /etc/keepalived
-  #     state: directory
 
   - name: Copy keepalived file
     template:
