@@ -2,7 +2,7 @@
   - name: Install fping
     apt:
       name: fping
-  
+
   - name: Add the user "pinger"
     ansible.builtin.user:
       name: pinger
@@ -35,3 +35,9 @@
     notify:
       - Reload systemd
       - Restart pinger
+
+  - name: Start pinger
+    service:
+        name: pinger
+        state: started
+        enabled: yes
