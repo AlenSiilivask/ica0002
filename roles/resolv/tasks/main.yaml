@@ -7,5 +7,5 @@
 
   - name: move resolf.conf
     template:
-      src: resolv.conf
+      src: resolv.conf.j2
       dest: /etc/resolv.conf

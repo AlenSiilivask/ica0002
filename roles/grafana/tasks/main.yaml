@@ -47,6 +47,7 @@
     template:
         src: grafana.ini.j2
         dest: /opt/grafana/grafana.ini
+    no_log: true
 
   - name: Install and start grafana in Docker
     community.docker.docker_container:

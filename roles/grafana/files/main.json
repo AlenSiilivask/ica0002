@@ -207,7 +207,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "exemplar": true,
@@ -263,7 +263,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -351,7 +351,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -437,7 +437,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 3,
+        "w": 5,
         "x": 8,
         "y": 6
       },
@@ -457,7 +457,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "expr": "mysql_up",
@@ -492,8 +492,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 13,
-        "x": 11,
+        "w": 11,
+        "x": 13,
         "y": 6
       },
       "id": 10,
@@ -510,7 +510,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[30m])) * 100)",
@@ -562,7 +562,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -651,7 +651,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 3,
+        "w": 5,
         "x": 8,
         "y": 12
       },
@@ -671,7 +671,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "expr": "bind_up",
@@ -787,8 +787,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 13,
-        "x": 11,
+        "w": 11,
+        "x": 13,
         "y": 12
       },
       "id": 19,
@@ -890,7 +890,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -999,7 +999,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "expr": "nginx_up",
@@ -1075,7 +1075,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -1156,7 +1156,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -1237,7 +1237,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -1326,7 +1326,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -1416,7 +1416,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
