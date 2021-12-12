@@ -36,7 +36,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -49,8 +49,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "never",
-            "spanNulls": true,
+            "showPoints": "auto",
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -72,50 +72,9 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "short"
-        },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "{instance=\"alen-1:9424\", job=\"InfluxDb\"}"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "{instance=\"alen-1:9424\", job=\"InfluxDb\"}"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-green",
-                  "mode": "fixed"
-                }
-              }
-            ]
           }
-        ]
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -123,20 +82,23 @@
         "x": 0,
         "y": 0
       },
-      "id": 22,
+      "id": 30,
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
+          "displayMode": "list",
           "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
         }
       },
-      "pluginVersion": "8.2.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "rate(influxdb_write_write_ok[1m])",
           "interval": "",
@@ -651,7 +613,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 5,
+        "w": 7,
         "x": 8,
         "y": 12
       },
@@ -787,8 +749,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 11,
-        "x": 13,
+        "w": 9,
+        "x": 15,
         "y": 12
       },
       "id": 19,
@@ -979,7 +941,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 5,
+        "w": 7,
         "x": 8,
         "y": 18
       },
@@ -1056,8 +1018,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 11,
-        "x": 13,
+        "w": 9,
+        "x": 15,
         "y": 18
       },
       "id": 24,

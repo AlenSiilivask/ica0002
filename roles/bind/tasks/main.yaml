@@ -69,9 +69,3 @@
       type: "CNAME"
       value: "{{ item.value }}.{{ zone }}."
     loop: "{{ cname_records | dict2items }}"
-  #
-  # - name: Start bind
-  #   ansible.builtin.service:
-  #       name: bind9
-  #       state: started
-  #       enabled: yes

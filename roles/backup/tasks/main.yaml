@@ -11,7 +11,7 @@
       path: /home/backup/restore
       owner: backup
       group: backup
-      mode: 0644
+      mode: 0755
       state: directory
 
   - name: Ensure that Duplicity is intalled
@@ -22,6 +22,6 @@
     template:
       owner: root
       group: root
-      mode: 0644
+      mode: 0755
       src: known_hosts.j2
       dest: /home/backup/.ssh/known_hosts

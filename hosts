@@ -1,16 +1,19 @@
-alen-1  ansible_host=193.40.156.86 ansible_port=7222 ansible_user=ubuntu ansible_python_interpreter=python3
+alen-1  ansible_host=193.40.156.86 ansible_port=12622 ansible_user=ubuntu ansible_python_interpreter=python3
 
-alen-2 ansible_host=193.40.156.86 ansible_port=2622 ansible_user=ubuntu ansible_python_interpreter=python3
+alen-2 ansible_host=193.40.156.86 ansible_port=7222 ansible_user=ubuntu ansible_python_interpreter=python3
+
+alen-3 ansible_host=193.40.156.86 ansible_port=2622 ansible_user=ubuntu ansible_python_interpreter=python3
 
 [db_servers]
 alen-1
 alen-2
 
 [dns_master]
-alen-2
+alen-3
 
 [dns_slaves]
 alen-1
+alen-2
 
 [dns_servers:children]
 dns_master
@@ -21,19 +24,19 @@ alen-1
 alen-2
 
 [prometheus_server]
-alen-1
+alen-3
 
 [grafana]
-alen-2
+alen-3
 
 [influxdb]
-alen-1
+alen-3
 
 [pinger]
 alen-1
 
 [telegraf]
-alen-1
+alen-3
 
 [keepalived]
 alen-1
