@@ -9,8 +9,9 @@
     template:
       src: my.cnf.j2
       dest: /var/lib/prometheus/.my.cnf
+    no_log: true
     notify: mysql_exporter conf
-
+    
   - name: Pause for 10 sec
     pause:
       seconds: 10

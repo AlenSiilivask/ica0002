@@ -11,6 +11,7 @@
     template:
       src: .my.cnf.j2
       dest: /home/backup/.my.cnf
+    no_log: true
 
   - name: MySQL-exporter user
     community.mysql.mysql_user:
@@ -25,6 +26,7 @@
     template:
       src: mysql-backup.j2
       dest: /etc/cron.d/mysql-backup
+    no_log: true
 
   - name: Ensure that cron file is created
     file:
