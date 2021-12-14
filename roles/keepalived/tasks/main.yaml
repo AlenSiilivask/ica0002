@@ -9,10 +9,14 @@
       dest: /etc/keepalived/keepalived.conf
     notify: Restart keepalived
 
+  - name: Create keepalivedscript user
+    ansible.builtin.user:
+      name: keepalived_script
+
   - name: Copy script
     template:
       src: keepalivedscript
-      dest: /home/keepalived_script
+      dest: /home/keepalived_script/keepalived_script
       mode: 777
     notify: Restart keepalived
 

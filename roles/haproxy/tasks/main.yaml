@@ -18,3 +18,9 @@
       src: prometheus-haproxy-exporter
       dest: /etc/default/prometheus-haproxy-exporter
     notify: prometheus-haproxy-exporter
+
+  - name: Start and enable haproxy
+    service:
+      name: haproxy
+      state: started
+      enabled: yes

@@ -1,4 +1,4 @@
-Mon 13 Dec 2021 01:45:21 PM EET
+Tue 14 Dec 2021 10:04:28 AM EET
 + hostname
 AlenPC
 + ansible-playbook infra.yaml --diff
@@ -19,10 +19,10 @@ TASK [init : Set hostname] *****************************************************
 --- before
 +++ after
 @@ -1 +1 @@
--hostname = alensiilivask-1
-+hostname = alen-1
+-hostname = alensiilivask-2
++hostname = alen-2
 
-changed: [alen-1]
+changed: [alen-2]
 --- before
 +++ after
 @@ -1 +1 @@
@@ -33,15 +33,15 @@ changed: [alen-3]
 --- before
 +++ after
 @@ -1 +1 @@
--hostname = alensiilivask-2
-+hostname = alen-2
+-hostname = alensiilivask-1
++hostname = alen-1
 
-changed: [alen-2]
+changed: [alen-1]
 
 TASK [backup : Create user backup with ssh key] ********************************
 changed: [alen-3]
-changed: [alen-1]
 changed: [alen-2]
+changed: [alen-1]
 
 TASK [backup : Ensure that dir is created] *************************************
 --- before
@@ -57,7 +57,7 @@ TASK [backup : Ensure that dir is created] *************************************
 +    "state": "directory"
  }
 
-changed: [alen-1]
+changed: [alen-2]
 --- before
 +++ after
 @@ -1,6 +1,6 @@
@@ -85,7 +85,7 @@ changed: [alen-3]
 +    "state": "directory"
  }
 
-changed: [alen-2]
+changed: [alen-1]
 
 TASK [backup : Ensure that Duplicity is intalled] ******************************
 The following additional packages will be installed:
@@ -98,7 +98,7 @@ The following NEW packages will be installed:
   duplicity librsync2 python3-bcrypt python3-fasteners python3-future
   python3-lockfile python3-monotonic python3-paramiko
 0 upgraded, 8 newly installed, 0 to remove and 139 not upgraded.
-changed: [alen-2]
+changed: [alen-3]
 The following additional packages will be installed:
   librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
   python3-monotonic python3-paramiko
@@ -109,7 +109,7 @@ The following NEW packages will be installed:
   duplicity librsync2 python3-bcrypt python3-fasteners python3-future
   python3-lockfile python3-monotonic python3-paramiko
 0 upgraded, 8 newly installed, 0 to remove and 139 not upgraded.
-changed: [alen-3]
+changed: [alen-2]
 The following additional packages will be installed:
   librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
   python3-monotonic python3-paramiko
@@ -124,42 +124,42 @@ changed: [alen-1]
 
 TASK [backup : Create known_hosts file] ****************************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpu7y4lvqu/known_hosts.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmphcjn44jb/known_hosts.j2
 @@ -0,0 +1 @@
 +backup.odns.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
 
 changed: [alen-2]
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp_te006ju/known_hosts.j2
-@@ -0,0 +1 @@
-+backup.odns.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
-
-changed: [alen-1]
---- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpwj_ngipa/known_hosts.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmph5oetwvr/known_hosts.j2
 @@ -0,0 +1 @@
 +backup.odns.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
 
 changed: [alen-3]
+--- before
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmplyfk2eru/known_hosts.j2
+@@ -0,0 +1 @@
++backup.odns.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
+
+changed: [alen-1]
 
 PLAY [Collect info about all VMs] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-1]
-ok: [alen-2]
 ok: [alen-3]
+ok: [alen-2]
+ok: [alen-1]
 
 TASK [setup] *******************************************************************
-ok: [alen-3]
 ok: [alen-2]
+ok: [alen-3]
 ok: [alen-1]
 
 PLAY [DNS servers] *************************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [alen-3]
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [bind : Install bind9] ****************************************************
 The following additional packages will be installed:
@@ -171,7 +171,7 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
 2 upgraded, 5 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-2]
+changed: [alen-3]
 The following additional packages will be installed:
   bind9-dnsutils bind9-libs bind9-utils dns-root-data python3-ply
 Suggested packages:
@@ -191,23 +191,23 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
 2 upgraded, 5 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-3]
+changed: [alen-2]
 
 TASK [bind : Start bind9] ******************************************************
+ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
-ok: [alen-3]
 
 TASK [bind : move bind9 conf] **************************************************
+changed: [alen-1]
 changed: [alen-3]
 changed: [alen-2]
-changed: [alen-1]
 
 TASK [bind : move db conf] *****************************************************
 skipping: [alen-1]
 skipping: [alen-2]
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpx7hhj9fv/db.odns.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp_7k_op3u/db.odns.j2
 @@ -0,0 +1,15 @@
 +$TTL	604800
 +odns.io.	IN	SOA	alensiilivask-2.odns.io. alensiilivask3.gmail.com (
@@ -221,9 +221,9 @@ skipping: [alen-2]
 +odns.io.	IN	NS	alen-1
 +odns.io.	IN	NS	alen-2
 +
-+alen-1 IN A 192.168.42.137
-+alen-2 IN A 192.168.42.85
-+alen-3 IN A 192.168.42.87
++alen-1 IN A 192.168.42.58
++alen-2 IN A 192.168.42.103
++alen-3 IN A 192.168.42.26
 
 changed: [alen-3]
 
@@ -231,7 +231,7 @@ TASK [bind : Add db configuration reversed] ************************************
 skipping: [alen-1]
 skipping: [alen-2]
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp59df6yth/db.odns.reversed.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp28wryw13/db.odns.reversed.j2
 @@ -0,0 +1,15 @@
 +$TTL	604800
 +42.168.192.in-addr.arpa.  IN	SOA	alensiilivask-2.odns.io. alen.odns.io. (
@@ -245,15 +245,15 @@ skipping: [alen-2]
 +42.168.192.in-addr.arpa.	IN	NS	alen-1.odns.io.
 +42.168.192.in-addr.arpa.	IN	NS	alen-2.odns.io.
 +
-+137 IN PTR alen-1.odns.io.
-+85 IN PTR alen-2.odns.io.
-+87 IN PTR alen-3.odns.io.
++58 IN PTR alen-1.odns.io.
++103 IN PTR alen-2.odns.io.
++26 IN PTR alen-3.odns.io.
 
 changed: [alen-3]
 
 TASK [bind : move conf.local] **************************************************
 --- before: /etc/bind/named.conf.local
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmplmu41uoy/named.conf.local.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp9ckic12m/named.conf.local.j2
 @@ -1,8 +1,20 @@
 -//
 -// Do any local configuration here
@@ -261,7 +261,7 @@ TASK [bind : move conf.local] **************************************************
 +zone "odns.io" {
 +    type master;
 +    allow-transfer {127.0.0.1;
-+    192.168.42.137;
++    192.168.42.58;
 +     key dns_transfer_key; };
 +    allow-update {127.0.0.1; key dns_update_key; };
  
@@ -275,7 +275,7 @@ TASK [bind : move conf.local] **************************************************
 +zone "42.168.192.in-addr.arpa" {
 +    type master;
 +    allow-transfer {127.0.0.1;
-+    192.168.42.137;
++    192.168.42.58;
 +     key dns_transfer_key; };
 +    allow-update {127.0.0.1; key dns_update_key; };
 +
@@ -284,53 +284,53 @@ TASK [bind : move conf.local] **************************************************
 
 changed: [alen-3]
 --- before: /etc/bind/named.conf.local
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpb1esdvtf/named.conf.local.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpmmiflz24/named.conf.local.j2
 @@ -1,8 +1,15 @@
 -//
 -// Do any local configuration here
 -//
 +zone "odns.io" {
 +    type slave;
-+    masters { 192.168.42.87; };
++    masters { 192.168.42.26; };
 +    file "db.odns.io";
 +};
  
 -// Consider adding the 1918 zones here, if they are not used in your
 -// organization
 -//include "/etc/bind/zones.rfc1918";
-+server 192.168.42.87 {
++server 192.168.42.26 {
 +    keys {dns_transfer_key; };
 +};
  
 +zone "42.168.192.in-addr.arpa" {
 +    type slave;
-+    masters { 192.168.42.87; };
++    masters { 192.168.42.26; };
 +    file "db.odns.reversed";
 +};
 
 changed: [alen-2]
 --- before: /etc/bind/named.conf.local
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpucacyrkx/named.conf.local.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpgd_erdon/named.conf.local.j2
 @@ -1,8 +1,15 @@
 -//
 -// Do any local configuration here
 -//
 +zone "odns.io" {
 +    type slave;
-+    masters { 192.168.42.87; };
++    masters { 192.168.42.26; };
 +    file "db.odns.io";
 +};
  
 -// Consider adding the 1918 zones here, if they are not used in your
 -// organization
 -//include "/etc/bind/zones.rfc1918";
-+server 192.168.42.87 {
++server 192.168.42.26 {
 +    keys {dns_transfer_key; };
 +};
  
 +zone "42.168.192.in-addr.arpa" {
 +    type slave;
-+    masters { 192.168.42.87; };
++    masters { 192.168.42.26; };
 +    file "db.odns.reversed";
 +};
 
@@ -339,9 +339,9 @@ changed: [alen-1]
 TASK [bind : Execute handlers] *************************************************
 
 RUNNING HANDLER [bind : Restart bind9 service] *********************************
-changed: [alen-3]
 changed: [alen-2]
 changed: [alen-1]
+changed: [alen-3]
 
 RUNNING HANDLER [bind : restart bind with rndc] ********************************
 changed: [alen-3]
@@ -355,20 +355,20 @@ TASK [bind : Add CNAME records] ************************************************
 skipping: [alen-1] => (item={'key': 'grafana', 'value': 'alen-3'}) 
 skipping: [alen-1] => (item={'key': 'influxdb', 'value': 'alen-3'}) 
 skipping: [alen-1] => (item={'key': 'lb1', 'value': 'alen-1'}) 
-skipping: [alen-1] => (item={'key': 'lb2', 'value': 'alen-2'}) 
-skipping: [alen-1] => (item={'key': 'mysql1', 'value': 'alen-1'}) 
 skipping: [alen-2] => (item={'key': 'grafana', 'value': 'alen-3'}) 
+skipping: [alen-1] => (item={'key': 'lb2', 'value': 'alen-2'}) 
 skipping: [alen-2] => (item={'key': 'influxdb', 'value': 'alen-3'}) 
+skipping: [alen-1] => (item={'key': 'mysql1', 'value': 'alen-1'}) 
 skipping: [alen-2] => (item={'key': 'lb1', 'value': 'alen-1'}) 
 skipping: [alen-1] => (item={'key': 'mysql2', 'value': 'alen-2'}) 
-skipping: [alen-1] => (item={'key': 'ns1', 'value': 'alen-3'}) 
 skipping: [alen-2] => (item={'key': 'lb2', 'value': 'alen-2'}) 
-skipping: [alen-1] => (item={'key': 'ns2', 'value': 'alen-1'}) 
+skipping: [alen-1] => (item={'key': 'ns1', 'value': 'alen-3'}) 
 skipping: [alen-2] => (item={'key': 'mysql1', 'value': 'alen-1'}) 
+skipping: [alen-1] => (item={'key': 'ns2', 'value': 'alen-1'}) 
 skipping: [alen-1] => (item={'key': 'prometheus', 'value': 'alen-3'}) 
-skipping: [alen-2] => (item={'key': 'mysql2', 'value': 'alen-2'}) 
 skipping: [alen-1] => (item={'key': 'web1', 'value': 'alen-1'}) 
 skipping: [alen-1] => (item={'key': 'web2', 'value': 'alen-2'}) 
+skipping: [alen-2] => (item={'key': 'mysql2', 'value': 'alen-2'}) 
 skipping: [alen-2] => (item={'key': 'ns1', 'value': 'alen-3'}) 
 skipping: [alen-2] => (item={'key': 'ns2', 'value': 'alen-1'}) 
 skipping: [alen-2] => (item={'key': 'prometheus', 'value': 'alen-3'}) 
@@ -390,20 +390,20 @@ TASK [bind_exporter : Install bind9 exporter] **********************************
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-1]
-The following NEW packages will be installed:
-  prometheus-bind-exporter
-0 upgraded, 1 newly installed, 0 to remove and 137 not upgraded.
 changed: [alen-2]
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 137 not upgraded.
 changed: [alen-3]
+The following NEW packages will be installed:
+  prometheus-bind-exporter
+0 upgraded, 1 newly installed, 0 to remove and 137 not upgraded.
+changed: [alen-1]
 
 TASK [bind_exporter : Start bind-exporter] *************************************
 ok: [alen-3]
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 PLAY [resolved conf] ***********************************************************
 
@@ -413,13 +413,13 @@ ok: [alen-2]
 ok: [alen-3]
 
 TASK [resolv : stop systemd-resolved] ******************************************
-changed: [alen-3]
 changed: [alen-2]
+changed: [alen-3]
 changed: [alen-1]
 
 TASK [resolv : move resolf.conf] ***********************************************
 --- before: /etc/resolv.conf
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp0eyas7gn/resolv.conf.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp45e3v0yj/resolv.conf.j2
 @@ -1,19 +1,3 @@
 -# This file is managed by man:systemd-resolved(8). Do not edit.
 -#
@@ -441,12 +441,12 @@ TASK [resolv : move resolf.conf] ***********************************************
 -options edns0 trust-ad
 -search openstacklocal
 +search odns.io
-+nameserver 192.168.42.137
-+nameserver 192.168.42.85
++nameserver 192.168.42.58
++nameserver 192.168.42.103
 
-changed: [alen-3]
+changed: [alen-2]
 --- before: /etc/resolv.conf
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmprz8cud6j/resolv.conf.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp64r361wn/resolv.conf.j2
 @@ -1,19 +1,3 @@
 -# This file is managed by man:systemd-resolved(8). Do not edit.
 -#
@@ -468,12 +468,12 @@ changed: [alen-3]
 -options edns0 trust-ad
 -search openstacklocal
 +search odns.io
-+nameserver 192.168.42.137
-+nameserver 192.168.42.85
++nameserver 192.168.42.58
++nameserver 192.168.42.103
 
 changed: [alen-1]
 --- before: /etc/resolv.conf
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp2xjfllz9/resolv.conf.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpw1hzqt_3/resolv.conf.j2
 @@ -1,19 +1,3 @@
 -# This file is managed by man:systemd-resolved(8). Do not edit.
 -#
@@ -495,10 +495,10 @@ changed: [alen-1]
 -options edns0 trust-ad
 -search openstacklocal
 +search odns.io
-+nameserver 192.168.42.137
-+nameserver 192.168.42.85
++nameserver 192.168.42.58
++nameserver 192.168.42.103
 
-changed: [alen-2]
+changed: [alen-3]
 
 PLAY [Database server] *********************************************************
 
@@ -554,25 +554,25 @@ ok: [alen-2]
 
 TASK [mysql : Copy override to location] ***************************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpnbo2_nsz/override.cnf
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp6jheqza4/override.cnf
 @@ -0,0 +1,6 @@
 +[mysqld]
 +bind-address = 0.0.0.0
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 85
++server-id = 103
 
 changed: [alen-2]
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp4b0tnhsp/override.cnf
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpn2wjyae1/override.cnf
 @@ -0,0 +1,6 @@
 +[mysqld]
 +bind-address = 0.0.0.0
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 137
++server-id = 58
 
 changed: [alen-1]
 
@@ -589,12 +589,12 @@ changed: [alen-2]
 changed: [alen-1]
 
 TASK [mysql : MySQL replication user] ******************************************
-changed: [alen-2]
 changed: [alen-1]
+changed: [alen-2]
 
 TASK [mysql : readonly] ********************************************************
-changed: [alen-2]
 changed: [alen-1]
+changed: [alen-2]
 
 TASK [mysql_backup : Ensure that dir is created] *******************************
 --- before
@@ -627,12 +627,12 @@ changed: [alen-1]
 changed: [alen-2]
 
 TASK [mysql_backup : conf file] ************************************************
-changed: [alen-2]
 changed: [alen-1]
+changed: [alen-2]
 
 TASK [mysql_backup : MySQL-exporter user] **************************************
-changed: [alen-1]
 changed: [alen-2]
+changed: [alen-1]
 
 TASK [mysql_backup : conf file] ************************************************
 changed: [alen-2]
@@ -687,8 +687,8 @@ changed: [alen-1] => (item=startreplica)
 PLAY [Doker bug fix] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 ok: [alen-3]
 
 TASK [fix_docker : Install iptables-persistent] ********************************
@@ -703,19 +703,19 @@ The following additional packages will be installed:
 The following NEW packages will be installed:
   iptables-persistent netfilter-persistent
 0 upgraded, 2 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-2]
+changed: [alen-1]
 The following additional packages will be installed:
   netfilter-persistent
 The following NEW packages will be installed:
   iptables-persistent netfilter-persistent
 0 upgraded, 2 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-1]
+changed: [alen-2]
 
 TASK [fix_docker : rule for docker] ********************************************
 --- before: /etc/iptables/rules.v4
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpmskqw2sd/rules.v4
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpfxxqlua7/rules.v4
 @@ -1,7 +1,8 @@
--# Generated by iptables-save v1.8.4 on Mon Dec 13 11:50:25 2021
+-# Generated by iptables-save v1.8.4 on Tue Dec 14 08:08:48 2021
 -*filter
 +*mangle
 +:PREROUTING ACCEPT [0:0]
@@ -725,13 +725,13 @@ TASK [fix_docker : rule for docker] ********************************************
 +:POSTROUTING ACCEPT [0:0]
 +-A POSTROUTING -o ens3 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1400 --clamp-mss-to-pmtu
  COMMIT
--# Completed on Mon Dec 13 11:50:25 2021
+-# Completed on Tue Dec 14 08:08:48 2021
 
 changed: [alen-3]
 --- before: /etc/iptables/rules.v4
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpq76k5xvd/rules.v4
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmptvignh12/rules.v4
 @@ -1,7 +1,8 @@
--# Generated by iptables-save v1.8.4 on Mon Dec 13 11:50:25 2021
+-# Generated by iptables-save v1.8.4 on Tue Dec 14 08:08:48 2021
 -*filter
 +*mangle
 +:PREROUTING ACCEPT [0:0]
@@ -741,13 +741,13 @@ changed: [alen-3]
 +:POSTROUTING ACCEPT [0:0]
 +-A POSTROUTING -o ens3 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1400 --clamp-mss-to-pmtu
  COMMIT
--# Completed on Mon Dec 13 11:50:25 2021
+-# Completed on Tue Dec 14 08:08:48 2021
 
 changed: [alen-1]
 --- before: /etc/iptables/rules.v4
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpzgp7pnde/rules.v4
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpmxphpxbc/rules.v4
 @@ -1,7 +1,8 @@
--# Generated by iptables-save v1.8.4 on Mon Dec 13 11:50:25 2021
+-# Generated by iptables-save v1.8.4 on Tue Dec 14 08:08:48 2021
 -*filter
 +*mangle
 +:PREROUTING ACCEPT [0:0]
@@ -757,7 +757,7 @@ changed: [alen-1]
 +:POSTROUTING ACCEPT [0:0]
 +-A POSTROUTING -o ens3 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1400 --clamp-mss-to-pmtu
  COMMIT
--# Completed on Mon Dec 13 11:50:25 2021
+-# Completed on Tue Dec 14 08:08:48 2021
 
 changed: [alen-2]
 
@@ -777,15 +777,15 @@ mistake may lead the ansible controller to loose access to the hosts and never
 regain it before fixing firewall rules through a serial console, or any other
 way except SSH. Please set task attribute 'poll' (=15) to 0, and 'async' (=0)
 to a value >2 and not greater than 'ansible_timeout' (=10) (recommended).
+changed: [alen-1]
 changed: [alen-3]
 changed: [alen-2]
-changed: [alen-1]
 
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 ok: [alen-2]
 
 TASK [docker : Install docker package] *****************************************
@@ -810,7 +810,7 @@ The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
   python3-websocket runc ubuntu-fan
 0 upgraded, 10 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-2]
+changed: [alen-1]
 The following additional packages will be installed:
   bridge-utils containerd dnsmasq-base libidn11 pigz python3-websocket runc
   ubuntu-fan
@@ -821,18 +821,18 @@ The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
   python3-websocket runc ubuntu-fan
 0 upgraded, 10 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-1]
+changed: [alen-2]
 
 TASK [docker : Docker started] *************************************************
 ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 PLAY [Web server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [agama : make agama directory] ********************************************
 --- before
@@ -857,8 +857,8 @@ changed: [alen-1]
 changed: [alen-2]
 
 TASK [agama : install docker file] *********************************************
-changed: [alen-2]
 changed: [alen-1]
+changed: [alen-2]
 
 TASK [agama : build agama container] *******************************************
 changed: [alen-2]
@@ -915,9 +915,9 @@ changed: [alen-2]
 PLAY [Nginx to all vms] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [alen-1]
 ok: [alen-2]
 ok: [alen-3]
-ok: [alen-1]
 
 TASK [nginx : Install nginx] ***************************************************
 The following additional packages will be installed:
@@ -964,13 +964,143 @@ The following NEW packages will be installed:
 changed: [alen-1]
 
 TASK [nginx : Start nginx] *****************************************************
-ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
+ok: [alen-2]
 
 TASK [nginx : Copy config] *****************************************************
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpjf19gue1/default.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpsy88ybpj/default.j2
+@@ -1,91 +1,37 @@
+-##
+-# You should look at the following URL's in order to grasp a solid understanding
+-# of Nginx configuration files in order to fully unleash the power of Nginx.
+-# https://www.nginx.com/resources/wiki/start/
+-# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+-# https://wiki.debian.org/Nginx/DirectoryStructure
+-#
+-# In most cases, administrators will remove this file from sites-enabled/ and
+-# leave it as reference inside of sites-available where it will continue to be
+-# updated by the nginx packaging team.
+-#
+-# This file will automatically load configuration files provided by other
+-# applications, such as Drupal or Wordpress. These applications will be made
+-# available underneath a path with that package name, such as /drupal8.
+-#
+-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+-##
++server {
++    listen 80 default_server;
++    large_client_header_buffers 4 16k;
++    server_name _;
+ 
+-# Default server configuration
+-#
+-server {
+-	listen 80 default_server;
+-	listen [::]:80 default_server;
++    location / {
++        proxy_set_header Host $http_host;
++        proxy_pass http://localhost:8001;
++    }
+ 
+-	# SSL configuration
+-	#
+-	# listen 443 ssl default_server;
+-	# listen [::]:443 ssl default_server;
+-	#
+-	# Note: You should disable gzip for SSL traffic.
+-	# See: https://bugs.debian.org/773332
+-	#
+-	# Read up on ssl_ciphers to ensure a secure configuration.
+-	# See: https://bugs.debian.org/765782
+-	#
+-	# Self signed certs generated by the ssl-cert package
+-	# Don't use them in a production server!
+-	#
+-	# include snippets/snakeoil.conf;
++    location /node-metrics {
++        proxy_pass http://localhost:9100/metrics;
++    }
+ 
+-	root /var/www/html;
+-
+-	# Add index.php to the list if you are using PHP
+-	index index.html index.htm index.nginx-debian.html;
+-
+-	server_name _;
+-
+-	location / {
+-		# First attempt to serve request as file, then
+-		# as directory, then fall back to displaying a 404.
+-		try_files $uri $uri/ =404;
+-	}
+-
+-	# pass PHP scripts to FastCGI server
+-	#
+-	#location ~ \.php$ {
+-	#	include snippets/fastcgi-php.conf;
+-	#
+-	#	# With php-fpm (or other unix sockets):
+-	#	fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+-	#	# With php-cgi (or other tcp sockets):
+-	#	fastcgi_pass 127.0.0.1:9000;
+-	#}
+-
+-	# deny access to .htaccess files, if Apache's document root
+-	# concurs with nginx's one
+-	#
+-	#location ~ /\.ht {
+-	#	deny all;
+-	#}
+-}
+-
+-
+-# Virtual Host configuration for example.com
+-#
+-# You can move that to a different file under sites-available/ and symlink that
+-# to sites-enabled/ to enable it.
+-#
+-#server {
+-#	listen 80;
+-#	listen [::]:80;
+-#
+-#	server_name example.com;
+-#
+-#	root /var/www/example.com;
+-#	index index.html;
+-#
+-#	location / {
+-#		try_files $uri $uri/ =404;
+-#	}
+-#}
++    
++    
++            location /mysql-metrics {
++            proxy_pass http://localhost:9104/metrics;
++    }
++    
++            location /bind-metrics {
++            proxy_pass http://localhost:9119/metrics;
++    }
++    
++            location /nginx-metrics {
++            proxy_pass http://localhost:9113/metrics;
++    }
++    
++    
++            location /haproxy-metrics {
++            proxy_pass http://localhost:9101/metrics;
++    }
++    
++            location /keepalived-metrics {
++            proxy_pass http://localhost:9165/metrics;
++    }
++    }
+
+changed: [alen-2]
+--- before: /etc/nginx/sites-enabled/default
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmptqkooy9v/default.j2
 @@ -1,91 +1,37 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -1100,7 +1230,7 @@ TASK [nginx : Copy config] *****************************************************
 
 changed: [alen-3]
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp8jyl9yyg/default.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp2bgtlm4g/default.j2
 @@ -1,91 +1,37 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -1229,136 +1359,6 @@ changed: [alen-3]
 +    }
 
 changed: [alen-1]
---- before: /etc/nginx/sites-enabled/default
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp19jnw43u/default.j2
-@@ -1,91 +1,37 @@
--##
--# You should look at the following URL's in order to grasp a solid understanding
--# of Nginx configuration files in order to fully unleash the power of Nginx.
--# https://www.nginx.com/resources/wiki/start/
--# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
--# https://wiki.debian.org/Nginx/DirectoryStructure
--#
--# In most cases, administrators will remove this file from sites-enabled/ and
--# leave it as reference inside of sites-available where it will continue to be
--# updated by the nginx packaging team.
--#
--# This file will automatically load configuration files provided by other
--# applications, such as Drupal or Wordpress. These applications will be made
--# available underneath a path with that package name, such as /drupal8.
--#
--# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
--##
-+server {
-+    listen 80 default_server;
-+    large_client_header_buffers 4 16k;
-+    server_name _;
- 
--# Default server configuration
--#
--server {
--	listen 80 default_server;
--	listen [::]:80 default_server;
-+    location / {
-+        proxy_set_header Host $http_host;
-+        proxy_pass http://localhost:8001;
-+    }
- 
--	# SSL configuration
--	#
--	# listen 443 ssl default_server;
--	# listen [::]:443 ssl default_server;
--	#
--	# Note: You should disable gzip for SSL traffic.
--	# See: https://bugs.debian.org/773332
--	#
--	# Read up on ssl_ciphers to ensure a secure configuration.
--	# See: https://bugs.debian.org/765782
--	#
--	# Self signed certs generated by the ssl-cert package
--	# Don't use them in a production server!
--	#
--	# include snippets/snakeoil.conf;
-+    location /node-metrics {
-+        proxy_pass http://localhost:9100/metrics;
-+    }
- 
--	root /var/www/html;
--
--	# Add index.php to the list if you are using PHP
--	index index.html index.htm index.nginx-debian.html;
--
--	server_name _;
--
--	location / {
--		# First attempt to serve request as file, then
--		# as directory, then fall back to displaying a 404.
--		try_files $uri $uri/ =404;
--	}
--
--	# pass PHP scripts to FastCGI server
--	#
--	#location ~ \.php$ {
--	#	include snippets/fastcgi-php.conf;
--	#
--	#	# With php-fpm (or other unix sockets):
--	#	fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
--	#	# With php-cgi (or other tcp sockets):
--	#	fastcgi_pass 127.0.0.1:9000;
--	#}
--
--	# deny access to .htaccess files, if Apache's document root
--	# concurs with nginx's one
--	#
--	#location ~ /\.ht {
--	#	deny all;
--	#}
--}
--
--
--# Virtual Host configuration for example.com
--#
--# You can move that to a different file under sites-available/ and symlink that
--# to sites-enabled/ to enable it.
--#
--#server {
--#	listen 80;
--#	listen [::]:80;
--#
--#	server_name example.com;
--#
--#	root /var/www/example.com;
--#	index index.html;
--#
--#	location / {
--#		try_files $uri $uri/ =404;
--#	}
--#}
-+    
-+    
-+            location /mysql-metrics {
-+            proxy_pass http://localhost:9104/metrics;
-+    }
-+    
-+            location /bind-metrics {
-+            proxy_pass http://localhost:9119/metrics;
-+    }
-+    
-+            location /nginx-metrics {
-+            proxy_pass http://localhost:9113/metrics;
-+    }
-+    
-+    
-+            location /haproxy-metrics {
-+            proxy_pass http://localhost:9101/metrics;
-+    }
-+    
-+            location /keepalived-metrics {
-+            proxy_pass http://localhost:9165/metrics;
-+    }
-+    }
-
-changed: [alen-2]
 
 TASK [nginx_exporter : Install nginx-exporter] *********************************
 The following NEW packages will be installed:
@@ -1368,20 +1368,20 @@ changed: [alen-2]
 The following NEW packages will be installed:
   prometheus-nginx-exporter
 0 upgraded, 1 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-3]
+changed: [alen-1]
 The following NEW packages will be installed:
   prometheus-nginx-exporter
 0 upgraded, 1 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-1]
+changed: [alen-3]
 
 TASK [nginx_exporter : Start nginx-exporter] ***********************************
-changed: [alen-3]
-changed: [alen-2]
 changed: [alen-1]
+changed: [alen-2]
+changed: [alen-3]
 
 TASK [nginx_exporter : Copy exporter config] ***********************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpwfj00jjw/exporter.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpnmlim8lg/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +	listen 8080 default_server;
@@ -1392,7 +1392,7 @@ TASK [nginx_exporter : Copy exporter config] ***********************************
 
 changed: [alen-3]
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpjxtrf77u/exporter.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpn2s47qlz/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +	listen 8080 default_server;
@@ -1403,7 +1403,7 @@ changed: [alen-3]
 
 changed: [alen-1]
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpekwmxd97/exporter.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpb_7pk756/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +	listen 8080 default_server;
@@ -1427,9 +1427,9 @@ changed: [alen-1]
 PLAY [Install node_exporters] **************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [alen-1]
 ok: [alen-3]
 ok: [alen-2]
-ok: [alen-1]
 
 TASK [node_exporter : Get node_exporters] **************************************
 The following additional packages will be installed:
@@ -1466,8 +1466,8 @@ changed: [alen-3]
 
 TASK [node_exporter : Node_exporters are started] ******************************
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 PLAY [Install prometheus] ******************************************************
 
@@ -1497,7 +1497,7 @@ ok: [alen-3]
 
 TASK [prometheus : Move prometheus conf] ***************************************
 --- before: /etc/prometheus/prometheus.yml
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmprz8zwvx6/prometheus.yml
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmps33duoeg/prometheus.yml
 @@ -1,44 +1,56 @@
 -# Sample config for Prometheus.
 +global:
@@ -1595,7 +1595,7 @@ changed: [alen-3]
 
 TASK [prometheus : Move prometheus ARGS] ***************************************
 --- before: /etc/default/prometheus
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpn_0ybzem/prometheus
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpw3hlttqe/prometheus
 @@ -1,57 +1 @@
 -# Set the command-line arguments to pass to the server.
 -ARGS=""
@@ -1654,7 +1654,7 @@ TASK [prometheus : Move prometheus ARGS] ***************************************
 -#                             Maximum number of queries executed concurrently.
 -#  --log.level=info           Only log messages with the given severity or
 -#                             above. One of: [debug, info, warn, error]
-+ARGS="--web.external-url=http://193.40.156.86:8780/prometheus"
++ARGS="--web.external-url=http://193.40.156.86:2680/prometheus"
 
 changed: [alen-3]
 
@@ -1682,8 +1682,8 @@ The following NEW packages will be installed:
 changed: [alen-1]
 
 TASK [mysql_exporter : Move mysql_exporter conf] *******************************
-changed: [alen-2]
 changed: [alen-1]
+changed: [alen-2]
 
 TASK [mysql_exporter : Pause for 10 sec] ***************************************
 Pausing for 10 seconds
@@ -1692,7 +1692,7 @@ ok: [alen-1]
 
 TASK [mysql_exporter : Move prometheus-mysqld-exporter conf] *******************
 --- before: /etc/default/prometheus-mysqld-exporter
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpw2xxvv13/prometheus-mysqld-exporter
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpe4f2p0_e/prometheus-mysqld-exporter
 @@ -1,120 +1 @@
 -# By default the connection string will be read from
 -# $HOME/my.cnf or from the file specified with the -config.my-cnf parameter.
@@ -1818,7 +1818,7 @@ TASK [mysql_exporter : Move prometheus-mysqld-exporter conf] *******************
 
 changed: [alen-2]
 --- before: /etc/default/prometheus-mysqld-exporter
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpvpxvlxqu/prometheus-mysqld-exporter
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpg30b8ytt/prometheus-mysqld-exporter
 @@ -1,120 +1 @@
 -# By default the connection string will be read from
 -# $HOME/my.cnf or from the file specified with the -config.my-cnf parameter.
@@ -1949,8 +1949,8 @@ changed: [alen-2]
 changed: [alen-1]
 
 RUNNING HANDLER [mysql_exporter : mysql_exporter conf] *************************
-changed: [alen-1]
 changed: [alen-2]
+changed: [alen-1]
 
 PLAY [Install grafana] *********************************************************
 
@@ -1981,7 +1981,7 @@ changed: [alen-3] => (item=datasources)
 
 TASK [grafana : Setup prometheus datasource] ***********************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpdippvt59/prometheus.yaml.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp6jadrr_7/prometheus.yaml.j2
 @@ -0,0 +1,23 @@
 +   apiVersion: 1
 +
@@ -1994,7 +1994,7 @@ TASK [grafana : Setup prometheus datasource] ***********************************
 +     type: prometheus
 +     access: proxy
 +     orgId: 1
-+     url: http://193.40.156.86:8780/prometheus
++     url: http://193.40.156.86:2680/prometheus
 +     password:
 +     user:
 +     database:
@@ -2011,7 +2011,7 @@ changed: [alen-3]
 
 TASK [grafana : Setup influxDB datasource] *************************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpivvyhmyi/influx.yaml.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp463uk5gj/influx.yaml.j2
 @@ -0,0 +1,13 @@
 +apiVersion: 1
 +
@@ -2031,7 +2031,7 @@ changed: [alen-3]
 
 TASK [grafana : Setup telegraf datasource] *************************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmputqk4b0b/telegraf.yaml.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpw4rf4yrt/telegraf.yaml.j2
 @@ -0,0 +1,13 @@
 +apiVersion: 1
 +
@@ -2051,7 +2051,7 @@ changed: [alen-3]
 
 TASK [grafana : Copy conf for dashboards] **************************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmps8v9h80f/dashboard.yaml.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpr9arralg/dashboard.yaml.j2
 @@ -0,0 +1,14 @@
 +apiVersion: 1
 +
@@ -5703,11 +5703,11 @@ changed: [alen-3]
 
 TASK [influxdb_backup : copy influxdb_backup to server] ************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpd1a3z6o3/influxdb-backup.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp6cw40ty2/influxdb-backup.j2
 @@ -0,0 +1,3 @@
 +55 * * * *  backup rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
-+40 0 28 * *  backup  duplicity --no-encryption full /home/backup/influxdb/ rsync://AlenSiilivask@backup.odns.io//home/AlenSiilivask/
-+40 0 * * *  backup  duplicity --no-encryption incremental /home/backup/influxdb/ rsync://AlenSiilivask@backup.odns.io//home/AlenSiilivask/
++40 0 28 * *  backup  duplicity --no-encryption full /home/backup/influxdb/ rsync://AlenSiilivask@backup.odns.io//home/AlenSiilivask/influx
++40 0 * * *  backup  duplicity --no-encryption incremental /home/backup/influxdb/ rsync://AlenSiilivask@backup.odns.io//home/AlenSiilivask/influx
 
 changed: [alen-3]
 
@@ -5823,13 +5823,13 @@ ok: [alen-3]
 ok: [alen-2]
 
 TASK [rsyslog : Install rsyslog] ***********************************************
-ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [rsyslog : Copy telegraf conf for rsyslog] ********************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpcfy6rbf1/10-telegraf.conf.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpa0p4cy0_/10-telegraf.conf.j2
 @@ -0,0 +1,6 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -5840,18 +5840,7 @@ TASK [rsyslog : Copy telegraf conf for rsyslog] ********************************
 
 changed: [alen-2]
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp3v0z6f_f/10-telegraf.conf.j2
-@@ -0,0 +1,6 @@
-+$ActionQueueType LinkedList # use asynchronous processing
-+$ActionQueueFileName srvrfwd # set file name, also enables disk mode
-+$ActionResumeRetryCount -1 # infinite retries on insert failure
-+$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
-+
-+*.* @influxdb:6514;RSYSLOG_SyslogProtocol23Format
-
-changed: [alen-1]
---- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmps4yrov5j/10-telegraf.conf.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpj61dhpvb/10-telegraf.conf.j2
 @@ -0,0 +1,6 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -5861,6 +5850,17 @@ changed: [alen-1]
 +*.* @influxdb:6514;RSYSLOG_SyslogProtocol23Format
 
 changed: [alen-3]
+--- before
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpcsueob04/10-telegraf.conf.j2
+@@ -0,0 +1,6 @@
++$ActionQueueType LinkedList # use asynchronous processing
++$ActionQueueFileName srvrfwd # set file name, also enables disk mode
++$ActionResumeRetryCount -1 # infinite retries on insert failure
++$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
++
++*.* @influxdb:6514;RSYSLOG_SyslogProtocol23Format
+
+changed: [alen-1]
 
 TASK [rsyslog : Ensure that rsyslog is running] ********************************
 ok: [alen-2]
@@ -5869,8 +5869,8 @@ ok: [alen-3]
 
 RUNNING HANDLER [rsyslog : Restart rsyslog] ************************************
 changed: [alen-2]
-changed: [alen-3]
 changed: [alen-1]
+changed: [alen-3]
 
 PLAY [Install influxDB exporter] ***********************************************
 
@@ -5933,74 +5933,7 @@ changed: [alen-1]
 
 TASK [haproxy : Copy haproxy config] *******************************************
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpen0gj7et/haproxy.cfg.j2
-@@ -1,34 +1,34 @@
- global
--	log /dev/log	local0
--	log /dev/log	local1 notice
--	chroot /var/lib/haproxy
--	stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
--	stats timeout 30s
--	user haproxy
--	group haproxy
--	daemon
--
--	# Default SSL material locations
--	ca-base /etc/ssl/certs
--	crt-base /etc/ssl/private
--
--	# See: https://ssl-config.mozilla.org/#server=haproxy&server-version=2.0.3&config=intermediate
--        ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
--        ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
--        ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
-+    log /dev/log    local0
-+    log /dev/log    local1 notice
-+    chroot /var/lib/haproxy
-+    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
-+    stats timeout 30s
-+    user haproxy
-+    group haproxy
-+    daemon
- 
- defaults
--	log	global
--	mode	http
--	option	httplog
--	option	dontlognull
-+    log    global
-+    mode    http
-+    option    httplog
-+    option    dontlognull
-         timeout connect 5000
-         timeout client  50000
-         timeout server  50000
--	errorfile 400 /etc/haproxy/errors/400.http
--	errorfile 403 /etc/haproxy/errors/403.http
--	errorfile 408 /etc/haproxy/errors/408.http
--	errorfile 500 /etc/haproxy/errors/500.http
--	errorfile 502 /etc/haproxy/errors/502.http
--	errorfile 503 /etc/haproxy/errors/503.http
--	errorfile 504 /etc/haproxy/errors/504.http
-+    errorfile 400 /etc/haproxy/errors/400.http
-+    errorfile 403 /etc/haproxy/errors/403.http
-+    errorfile 408 /etc/haproxy/errors/408.http
-+    errorfile 500 /etc/haproxy/errors/500.http
-+    errorfile 502 /etc/haproxy/errors/502.http
-+    errorfile 503 /etc/haproxy/errors/503.http
-+    errorfile 504 /etc/haproxy/errors/504.http
-+
-+listen agama
-+    bind :88
-+    stats enable
-+    stats uri /stats
-+    server agama1-1 alen-1:8001 check
-+	server agama1-2 alen-1:8002 check
-+    server agama2-1 alen-2:8001 check
-+	server agama2-2 alen-2:8002 check
-
-changed: [alen-2]
---- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp8ynzg0mr/haproxy.cfg.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpqyn_fip1/haproxy.cfg.j2
 @@ -1,34 +1,34 @@
  global
 -	log /dev/log	local0
@@ -6066,20 +5999,87 @@ changed: [alen-2]
 +	server agama2-2 alen-2:8002 check
 
 changed: [alen-1]
+--- before: /etc/haproxy/haproxy.cfg
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpfue1axyf/haproxy.cfg.j2
+@@ -1,34 +1,34 @@
+ global
+-	log /dev/log	local0
+-	log /dev/log	local1 notice
+-	chroot /var/lib/haproxy
+-	stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+-	stats timeout 30s
+-	user haproxy
+-	group haproxy
+-	daemon
+-
+-	# Default SSL material locations
+-	ca-base /etc/ssl/certs
+-	crt-base /etc/ssl/private
+-
+-	# See: https://ssl-config.mozilla.org/#server=haproxy&server-version=2.0.3&config=intermediate
+-        ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
+-        ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
+-        ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
++    log /dev/log    local0
++    log /dev/log    local1 notice
++    chroot /var/lib/haproxy
++    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
++    stats timeout 30s
++    user haproxy
++    group haproxy
++    daemon
+ 
+ defaults
+-	log	global
+-	mode	http
+-	option	httplog
+-	option	dontlognull
++    log    global
++    mode    http
++    option    httplog
++    option    dontlognull
+         timeout connect 5000
+         timeout client  50000
+         timeout server  50000
+-	errorfile 400 /etc/haproxy/errors/400.http
+-	errorfile 403 /etc/haproxy/errors/403.http
+-	errorfile 408 /etc/haproxy/errors/408.http
+-	errorfile 500 /etc/haproxy/errors/500.http
+-	errorfile 502 /etc/haproxy/errors/502.http
+-	errorfile 503 /etc/haproxy/errors/503.http
+-	errorfile 504 /etc/haproxy/errors/504.http
++    errorfile 400 /etc/haproxy/errors/400.http
++    errorfile 403 /etc/haproxy/errors/403.http
++    errorfile 408 /etc/haproxy/errors/408.http
++    errorfile 500 /etc/haproxy/errors/500.http
++    errorfile 502 /etc/haproxy/errors/502.http
++    errorfile 503 /etc/haproxy/errors/503.http
++    errorfile 504 /etc/haproxy/errors/504.http
++
++listen agama
++    bind :88
++    stats enable
++    stats uri /stats
++    server agama1-1 alen-1:8001 check
++	server agama1-2 alen-1:8002 check
++    server agama2-1 alen-2:8001 check
++	server agama2-2 alen-2:8002 check
+
+changed: [alen-2]
 
 TASK [haproxy : Install haproxy prometheus exporter] ***************************
 The following NEW packages will be installed:
   prometheus-haproxy-exporter
 0 upgraded, 1 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-1]
+changed: [alen-2]
 The following NEW packages will be installed:
   prometheus-haproxy-exporter
 0 upgraded, 1 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-2]
+changed: [alen-1]
 
 TASK [haproxy : Move prometheus-mysqld-exporter conf] **************************
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp0f5idqfv/prometheus-haproxy-exporter
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpw7cbu188/prometheus-haproxy-exporter
 @@ -1,35 +1 @@
 -# Set the command-line arguments to pass to the server.
 -# Due to shell scaping, to pass backslashes for regexes, you need to double
@@ -6120,7 +6120,7 @@ TASK [haproxy : Move prometheus-mysqld-exporter conf] **************************
 
 changed: [alen-2]
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpckabd1to/prometheus-haproxy-exporter
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpthb37dp7/prometheus-haproxy-exporter
 @@ -1,35 +1 @@
 -# Set the command-line arguments to pass to the server.
 -# Due to shell scaping, to pass backslashes for regexes, you need to double
@@ -6162,18 +6162,18 @@ changed: [alen-2]
 changed: [alen-1]
 
 RUNNING HANDLER [haproxy : Restart haproxy] ************************************
-changed: [alen-1]
 changed: [alen-2]
+changed: [alen-1]
 
 RUNNING HANDLER [haproxy : prometheus-haproxy-exporter] ************************
-changed: [alen-1]
 changed: [alen-2]
+changed: [alen-1]
 
 PLAY [Install keepalived] ******************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [keepalived : Install keepalived] *****************************************
 The following additional packages will be installed:
@@ -6185,7 +6185,7 @@ The following NEW packages will be installed:
   ipvsadm keepalived libmysqlclient21 libnl-3-200 libnl-genl-3-200
   libsensors-config libsensors5 libsnmp-base libsnmp35
 0 upgraded, 9 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-2]
+changed: [alen-1]
 The following additional packages will be installed:
   ipvsadm libmysqlclient21 libnl-3-200 libnl-genl-3-200 libsensors-config
   libsensors5 libsnmp-base libsnmp35
@@ -6195,40 +6195,11 @@ The following NEW packages will be installed:
   ipvsadm keepalived libmysqlclient21 libnl-3-200 libnl-genl-3-200
   libsensors-config libsensors5 libsnmp-base libsnmp35
 0 upgraded, 9 newly installed, 0 to remove and 137 not upgraded.
-changed: [alen-1]
+changed: [alen-2]
 
 TASK [keepalived : Copy keepalived file] ***************************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpozbut3zs/keepalived.conf.j2
-@@ -0,0 +1,24 @@
-+vrrp_script check_haproxy {
-+    script "/home/keepalived_script"
-+    weight 20
-+    interval 1
-+}
-+
-+vrrp_instance Название {
-+    interface ens3
-+    virtual_router_id 1
-+        priority 99
-+        advert_int 1
-+    virtual_ipaddress {
-+            192.168.100.137/24
-+        }
-+
-+    unicast_peer {
-+                        192.168.42.137
-+                                    }
-+
-+
-+    track_script {
-+        check_haproxy
-+    }
-+}
-
-changed: [alen-2]
---- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpurdxujca/keepalived.conf.j2
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpbutwl6i3/keepalived.conf.j2
 @@ -0,0 +1,24 @@
 +vrrp_script check_haproxy {
 +    script "/home/keepalived_script"
@@ -6242,11 +6213,11 @@ changed: [alen-2]
 +        priority 100
 +        advert_int 1
 +    virtual_ipaddress {
-+            192.168.100.137/24
++            192.168.100.58/24
 +        }
 +
 +    unicast_peer {
-+                                        192.168.42.85
++                                        192.168.42.103
 +                    }
 +
 +
@@ -6256,17 +6227,46 @@ changed: [alen-2]
 +}
 
 changed: [alen-1]
+--- before
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp3g8ims9b/keepalived.conf.j2
+@@ -0,0 +1,24 @@
++vrrp_script check_haproxy {
++    script "/home/keepalived_script"
++    weight 20
++    interval 1
++}
++
++vrrp_instance Название {
++    interface ens3
++    virtual_router_id 1
++        priority 99
++        advert_int 1
++    virtual_ipaddress {
++            192.168.100.58/24
++        }
++
++    unicast_peer {
++                        192.168.42.58
++                                    }
++
++
++    track_script {
++        check_haproxy
++    }
++}
+
+changed: [alen-2]
 
 TASK [keepalived : Copy script] ************************************************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpg39yyguc/keepalivedscript
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpucqizgfy/keepalivedscript
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
 
 changed: [alen-2]
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmp22hz3skz/keepalivedscript
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpnpyjgx39/keepalivedscript
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
@@ -6285,21 +6285,7 @@ changed: [alen-1]
 
 TASK [keepalived : Copy keepalived exporter service file] **********************
 --- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpec7r5i9l/keepalived_exporter.service
-@@ -0,0 +1,9 @@
-+[Unit]
-+After=network-online.target
-+
-+[Service]
-+User=root
-+ExecStart=/usr/local/bin/keepalived_exporter
-+
-+[Install]
-+WantedBy=multi-user.target
-
-changed: [alen-1]
---- before
-+++ after: /home/alen/.ansible/tmp/ansible-local-81568jn3ganav/tmpe9_byomd/keepalived_exporter.service
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmp3fulzjxw/keepalived_exporter.service
 @@ -0,0 +1,9 @@
 +[Unit]
 +After=network-online.target
@@ -6312,6 +6298,20 @@ changed: [alen-1]
 +WantedBy=multi-user.target
 
 changed: [alen-2]
+--- before
++++ after: /home/alen/.ansible/tmp/ansible-local-7773t5m5cmhz/tmpybokimmp/keepalived_exporter.service
+@@ -0,0 +1,9 @@
++[Unit]
++After=network-online.target
++
++[Service]
++User=root
++ExecStart=/usr/local/bin/keepalived_exporter
++
++[Install]
++WantedBy=multi-user.target
+
+changed: [alen-1]
 
 TASK [keepalived : Start and enable keepalived exporter] ***********************
 changed: [alen-2]
@@ -6340,58 +6340,58 @@ ok: [alen-2]
 ok: [alen-3]
 
 TASK [init : Update APT cache] *************************************************
+ok: [alen-1]
 ok: [alen-2]
 ok: [alen-3]
-ok: [alen-1]
 
 TASK [init : Set hostname] *****************************************************
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 ok: [alen-2]
 
 TASK [backup : Create user backup with ssh key] ********************************
-ok: [alen-3]
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
+ok: [alen-3]
 
 TASK [backup : Ensure that dir is created] *************************************
-ok: [alen-3]
 ok: [alen-1]
 ok: [alen-2]
+ok: [alen-3]
 
 TASK [backup : Ensure that Duplicity is intalled] ******************************
-ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [backup : Create known_hosts file] ****************************************
-ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
+ok: [alen-3]
 
 PLAY [Collect info about all VMs] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-1]
-ok: [alen-2]
 ok: [alen-3]
+ok: [alen-2]
+ok: [alen-1]
 
 TASK [setup] *******************************************************************
-ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
+ok: [alen-3]
 
 PLAY [DNS servers] *************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-3]
 ok: [alen-1]
 ok: [alen-2]
+ok: [alen-3]
 
 TASK [bind : Install bind9] ****************************************************
-ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [bind : Start bind9] ******************************************************
 ok: [alen-3]
@@ -6414,9 +6414,9 @@ skipping: [alen-2]
 ok: [alen-3]
 
 TASK [bind : move conf.local] **************************************************
-ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
+ok: [alen-3]
 
 TASK [bind : Execute handlers] *************************************************
 
@@ -6426,28 +6426,28 @@ skipping: [alen-2] => (item={'key': 'backup', 'value': '192.168.42.156'})
 ok: [alen-3] => (item={'key': 'backup', 'value': '192.168.42.156'})
 
 TASK [bind : Add CNAME records] ************************************************
+skipping: [alen-2] => (item={'key': 'grafana', 'value': 'alen-3'}) 
 skipping: [alen-1] => (item={'key': 'grafana', 'value': 'alen-3'}) 
+skipping: [alen-2] => (item={'key': 'influxdb', 'value': 'alen-3'}) 
+skipping: [alen-2] => (item={'key': 'lb1', 'value': 'alen-1'}) 
 skipping: [alen-1] => (item={'key': 'influxdb', 'value': 'alen-3'}) 
 skipping: [alen-1] => (item={'key': 'lb1', 'value': 'alen-1'}) 
-skipping: [alen-1] => (item={'key': 'lb2', 'value': 'alen-2'}) 
-skipping: [alen-1] => (item={'key': 'mysql1', 'value': 'alen-1'}) 
-skipping: [alen-2] => (item={'key': 'grafana', 'value': 'alen-3'}) 
-skipping: [alen-1] => (item={'key': 'mysql2', 'value': 'alen-2'}) 
-skipping: [alen-2] => (item={'key': 'influxdb', 'value': 'alen-3'}) 
-skipping: [alen-1] => (item={'key': 'ns1', 'value': 'alen-3'}) 
-skipping: [alen-2] => (item={'key': 'lb1', 'value': 'alen-1'}) 
-skipping: [alen-1] => (item={'key': 'ns2', 'value': 'alen-1'}) 
-skipping: [alen-1] => (item={'key': 'prometheus', 'value': 'alen-3'}) 
 skipping: [alen-2] => (item={'key': 'lb2', 'value': 'alen-2'}) 
+skipping: [alen-1] => (item={'key': 'lb2', 'value': 'alen-2'}) 
 skipping: [alen-2] => (item={'key': 'mysql1', 'value': 'alen-1'}) 
-skipping: [alen-1] => (item={'key': 'web1', 'value': 'alen-1'}) 
-skipping: [alen-1] => (item={'key': 'web2', 'value': 'alen-2'}) 
 skipping: [alen-2] => (item={'key': 'mysql2', 'value': 'alen-2'}) 
 skipping: [alen-2] => (item={'key': 'ns1', 'value': 'alen-3'}) 
+skipping: [alen-1] => (item={'key': 'mysql1', 'value': 'alen-1'}) 
+skipping: [alen-1] => (item={'key': 'mysql2', 'value': 'alen-2'}) 
 skipping: [alen-2] => (item={'key': 'ns2', 'value': 'alen-1'}) 
+skipping: [alen-1] => (item={'key': 'ns1', 'value': 'alen-3'}) 
 skipping: [alen-2] => (item={'key': 'prometheus', 'value': 'alen-3'}) 
+skipping: [alen-1] => (item={'key': 'ns2', 'value': 'alen-1'}) 
+skipping: [alen-1] => (item={'key': 'prometheus', 'value': 'alen-3'}) 
 skipping: [alen-2] => (item={'key': 'web1', 'value': 'alen-1'}) 
 skipping: [alen-2] => (item={'key': 'web2', 'value': 'alen-2'}) 
+skipping: [alen-1] => (item={'key': 'web1', 'value': 'alen-1'}) 
+skipping: [alen-1] => (item={'key': 'web2', 'value': 'alen-2'}) 
 ok: [alen-3] => (item={'key': 'grafana', 'value': 'alen-3'})
 ok: [alen-3] => (item={'key': 'influxdb', 'value': 'alen-3'})
 ok: [alen-3] => (item={'key': 'lb1', 'value': 'alen-1'})
@@ -6462,25 +6462,25 @@ ok: [alen-3] => (item={'key': 'web2', 'value': 'alen-2'})
 
 TASK [bind_exporter : Install bind9 exporter] **********************************
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [bind_exporter : Start bind-exporter] *************************************
 ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 PLAY [resolved conf] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
+ok: [alen-3]
 
 TASK [resolv : stop systemd-resolved] ******************************************
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [resolv : move resolf.conf] ***********************************************
 ok: [alen-2]
@@ -6498,24 +6498,24 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql : Start mysql] *****************************************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [mysql : Copy override to location] ***************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [mysql : MySQL database] **************************************************
 ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql : MySQL user] ******************************************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [mysql : MySQL-exporter user] *********************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [mysql : MySQL replication user] ******************************************
 ok: [alen-2]
@@ -6526,36 +6526,36 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql_backup : Ensure that dir is created] *******************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [mysql_backup : conf file] ************************************************
 ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql_backup : MySQL-exporter user] **************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [mysql_backup : conf file] ************************************************
 ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql_backup : Ensure that cron file is created] *************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 PLAY [Doker bug fix] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [fix_docker : Install iptables-persistent] ********************************
-ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [fix_docker : rule for docker] ********************************************
 ok: [alen-3]
@@ -6578,21 +6578,21 @@ mistake may lead the ansible controller to loose access to the hosts and never
 regain it before fixing firewall rules through a serial console, or any other
 way except SSH. Please set task attribute 'poll' (=15) to 0, and 'async' (=0)
 to a value >2 and not greater than 'ansible_timeout' (=10) (recommended).
-ok: [alen-2]
-ok: [alen-1]
 ok: [alen-3]
+ok: [alen-1]
+ok: [alen-2]
 
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [alen-1]
-ok: [alen-3]
 ok: [alen-2]
+ok: [alen-3]
 
 TASK [docker : Install docker package] *****************************************
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [docker : Docker started] *************************************************
 ok: [alen-3]
@@ -6606,20 +6606,20 @@ ok: [alen-1]
 ok: [alen-2]
 
 TASK [agama : make agama directory] ********************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [agama : install docker file] *********************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [agama : build agama container] *******************************************
 ok: [alen-2]
 ok: [alen-1]
 
 TASK [agama : start agama container] *******************************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [agama : start second agama container] ************************************
 ok: [alen-2]
@@ -6628,56 +6628,56 @@ ok: [alen-1]
 PLAY [Nginx to all vms] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [alen-1]
 ok: [alen-3]
 ok: [alen-2]
-ok: [alen-1]
 
 TASK [nginx : Install nginx] ***************************************************
-ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
+ok: [alen-3]
 
 TASK [nginx : Start nginx] *****************************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 ok: [alen-3]
 
 TASK [nginx : Copy config] *****************************************************
+ok: [alen-2]
 ok: [alen-1]
 ok: [alen-3]
-ok: [alen-2]
 
 TASK [nginx_exporter : Install nginx-exporter] *********************************
-ok: [alen-3]
 ok: [alen-1]
 ok: [alen-2]
+ok: [alen-3]
 
 TASK [nginx_exporter : Start nginx-exporter] ***********************************
-ok: [alen-3]
 ok: [alen-1]
 ok: [alen-2]
+ok: [alen-3]
 
 TASK [nginx_exporter : Copy exporter config] ***********************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 ok: [alen-3]
 
 PLAY [Install node_exporters] **************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
+ok: [alen-3]
 
 TASK [node_exporter : Get node_exporters] **************************************
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [node_exporter : Node_exporters are started] ******************************
+ok: [alen-2]
 ok: [alen-1]
 ok: [alen-3]
-ok: [alen-2]
 
 PLAY [Install prometheus] ******************************************************
 
@@ -6707,19 +6707,19 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql_exporter : Move mysql_exporter conf] *******************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [mysql_exporter : Pause for 10 sec] ***************************************
 skipping: [alen-1]
 
 TASK [mysql_exporter : Move prometheus-mysqld-exporter conf] *******************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [mysql_exporter : Start mysql-exporter111] ********************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 PLAY [Install grafana] *********************************************************
 
@@ -6821,24 +6821,24 @@ ok: [alen-1]
 PLAY [Install rsyslog] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
+ok: [alen-3]
 
 TASK [rsyslog : Install rsyslog] ***********************************************
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [rsyslog : Copy telegraf conf for rsyslog] ********************************
-ok: [alen-3]
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
+ok: [alen-3]
 
 TASK [rsyslog : Ensure that rsyslog is running] ********************************
-ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
+ok: [alen-3]
 
 PLAY [Install influxDB exporter] ***********************************************
 
@@ -6857,34 +6857,34 @@ ok: [alen-3]
 PLAY [Install haproxy] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [haproxy : Install haproxy] ***********************************************
 ok: [alen-2]
 ok: [alen-1]
 
 TASK [haproxy : Copy haproxy config] *******************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [haproxy : Install haproxy prometheus exporter] ***************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [haproxy : Move prometheus-mysqld-exporter conf] **************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 PLAY [Install keepalived] ******************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [keepalived : Install keepalived] *****************************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [keepalived : Copy keepalived file] ***************************************
 ok: [alen-2]
@@ -6895,16 +6895,16 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [keepalived : Ensure that keepalived is running] **************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [keepalived : Copy keepalived exporter binary] ****************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [keepalived : Copy keepalived exporter service file] **********************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [keepalived : Start and enable keepalived exporter] ***********************
 ok: [alen-2]
@@ -6918,17 +6918,17 @@ alen-3                     : ok=75   changed=0    unreachable=0    failed=0    s
 + ansible all -b -m reboot -a test_command=uptime
 alen-3 | CHANGED => {
     "changed": true,
-    "elapsed": 40,
-    "rebooted": true
-}
-alen-1 | CHANGED => {
-    "changed": true,
-    "elapsed": 44,
+    "elapsed": 36,
     "rebooted": true
 }
 alen-2 | CHANGED => {
     "changed": true,
-    "elapsed": 46,
+    "elapsed": 41,
+    "rebooted": true
+}
+alen-1 | CHANGED => {
+    "changed": true,
+    "elapsed": 54,
     "rebooted": true
 }
 + ansible-playbook infra.yaml --diff
@@ -6942,18 +6942,18 @@ ok: [alen-1]
 
 TASK [init : Update APT cache] *************************************************
 ok: [alen-3]
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [init : Set hostname] *****************************************************
+ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
-ok: [alen-3]
 
 TASK [backup : Create user backup with ssh key] ********************************
-ok: [alen-1]
 ok: [alen-3]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [backup : Ensure that dir is created] *************************************
 ok: [alen-1]
@@ -6961,20 +6961,20 @@ ok: [alen-3]
 ok: [alen-2]
 
 TASK [backup : Ensure that Duplicity is intalled] ******************************
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 ok: [alen-2]
 
 TASK [backup : Create known_hosts file] ****************************************
 ok: [alen-3]
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 PLAY [Collect info about all VMs] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-3]
 ok: [alen-2]
+ok: [alen-3]
 ok: [alen-1]
 
 TASK [setup] *******************************************************************
@@ -6986,23 +6986,23 @@ PLAY [DNS servers] *************************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [alen-3]
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [bind : Install bind9] ****************************************************
 ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [bind : Start bind9] ******************************************************
-ok: [alen-3]
 ok: [alen-2]
+ok: [alen-3]
 ok: [alen-1]
 
 TASK [bind : move bind9 conf] **************************************************
+ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
-ok: [alen-3]
 
 TASK [bind : move db conf] *****************************************************
 skipping: [alen-1]
@@ -7016,8 +7016,8 @@ ok: [alen-3]
 
 TASK [bind : move conf.local] **************************************************
 ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [bind : Execute handlers] *************************************************
 
@@ -7034,14 +7034,14 @@ skipping: [alen-1] => (item={'key': 'lb2', 'value': 'alen-2'})
 skipping: [alen-1] => (item={'key': 'mysql1', 'value': 'alen-1'}) 
 skipping: [alen-1] => (item={'key': 'mysql2', 'value': 'alen-2'}) 
 skipping: [alen-1] => (item={'key': 'ns1', 'value': 'alen-3'}) 
-skipping: [alen-2] => (item={'key': 'grafana', 'value': 'alen-3'}) 
-skipping: [alen-2] => (item={'key': 'influxdb', 'value': 'alen-3'}) 
 skipping: [alen-1] => (item={'key': 'ns2', 'value': 'alen-1'}) 
-skipping: [alen-2] => (item={'key': 'lb1', 'value': 'alen-1'}) 
 skipping: [alen-1] => (item={'key': 'prometheus', 'value': 'alen-3'}) 
-skipping: [alen-2] => (item={'key': 'lb2', 'value': 'alen-2'}) 
 skipping: [alen-1] => (item={'key': 'web1', 'value': 'alen-1'}) 
 skipping: [alen-1] => (item={'key': 'web2', 'value': 'alen-2'}) 
+skipping: [alen-2] => (item={'key': 'grafana', 'value': 'alen-3'}) 
+skipping: [alen-2] => (item={'key': 'influxdb', 'value': 'alen-3'}) 
+skipping: [alen-2] => (item={'key': 'lb1', 'value': 'alen-1'}) 
+skipping: [alen-2] => (item={'key': 'lb2', 'value': 'alen-2'}) 
 skipping: [alen-2] => (item={'key': 'mysql1', 'value': 'alen-1'}) 
 skipping: [alen-2] => (item={'key': 'mysql2', 'value': 'alen-2'}) 
 skipping: [alen-2] => (item={'key': 'ns1', 'value': 'alen-3'}) 
@@ -7062,9 +7062,9 @@ ok: [alen-3] => (item={'key': 'web1', 'value': 'alen-1'})
 ok: [alen-3] => (item={'key': 'web2', 'value': 'alen-2'})
 
 TASK [bind_exporter : Install bind9 exporter] **********************************
+ok: [alen-1]
 ok: [alen-3]
 ok: [alen-2]
-ok: [alen-1]
 
 TASK [bind_exporter : Start bind-exporter] *************************************
 ok: [alen-3]
@@ -7080,13 +7080,13 @@ ok: [alen-1]
 
 TASK [resolv : stop systemd-resolved] ******************************************
 ok: [alen-2]
-ok: [alen-1]
 ok: [alen-3]
+ok: [alen-1]
 
 TASK [resolv : move resolf.conf] ***********************************************
+ok: [alen-2]
 ok: [alen-1]
 ok: [alen-3]
-ok: [alen-2]
 
 PLAY [Database server] *********************************************************
 
@@ -7103,12 +7103,12 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql : Copy override to location] ***************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [mysql : MySQL database] **************************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [mysql : MySQL user] ******************************************************
 ok: [alen-2]
@@ -7127,8 +7127,8 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql_backup : Ensure that dir is created] *******************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [mysql_backup : conf file] ************************************************
 ok: [alen-1]
@@ -7139,8 +7139,8 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql_backup : conf file] ************************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [mysql_backup : Ensure that cron file is created] *************************
 ok: [alen-1]
@@ -7155,13 +7155,13 @@ ok: [alen-2]
 
 TASK [fix_docker : Install iptables-persistent] ********************************
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [fix_docker : rule for docker] ********************************************
+ok: [alen-1]
 ok: [alen-3]
 ok: [alen-2]
-ok: [alen-1]
 
 TASK [fix_docker : Restore iptables] *******************************************
 [WARNING]: Attempts to restore iptables state without rollback in case of
@@ -7180,15 +7180,15 @@ regain it before fixing firewall rules through a serial console, or any other
 way except SSH. Please set task attribute 'poll' (=15) to 0, and 'async' (=0)
 to a value >2 and not greater than 'ansible_timeout' (=10) (recommended).
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-1]
 ok: [alen-3]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [docker : Install docker package] *****************************************
 ok: [alen-3]
@@ -7196,19 +7196,19 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [docker : Docker started] *************************************************
+ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
-ok: [alen-3]
 
 PLAY [Web server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [agama : make agama directory] ********************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [agama : install docker file] *********************************************
 ok: [alen-2]
@@ -7240,45 +7240,45 @@ ok: [alen-1]
 
 TASK [nginx : Start nginx] *****************************************************
 ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [nginx : Copy config] *****************************************************
-ok: [alen-1]
 ok: [alen-3]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [nginx_exporter : Install nginx-exporter] *********************************
-ok: [alen-3]
 ok: [alen-2]
+ok: [alen-3]
 ok: [alen-1]
 
 TASK [nginx_exporter : Start nginx-exporter] ***********************************
+ok: [alen-2]
 ok: [alen-1]
 ok: [alen-3]
-ok: [alen-2]
 
 TASK [nginx_exporter : Copy exporter config] ***********************************
+ok: [alen-2]
 ok: [alen-1]
 ok: [alen-3]
-ok: [alen-2]
 
 PLAY [Install node_exporters] **************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-1]
-ok: [alen-3]
 ok: [alen-2]
+ok: [alen-3]
+ok: [alen-1]
 
 TASK [node_exporter : Get node_exporters] **************************************
-ok: [alen-3]
 ok: [alen-2]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [node_exporter : Node_exporters are started] ******************************
+ok: [alen-2]
 ok: [alen-1]
 ok: [alen-3]
-ok: [alen-2]
 
 PLAY [Install prometheus] ******************************************************
 
@@ -7308,19 +7308,19 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [mysql_exporter : Move mysql_exporter conf] *******************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [mysql_exporter : Pause for 10 sec] ***************************************
 skipping: [alen-1]
 
 TASK [mysql_exporter : Move prometheus-mysqld-exporter conf] *******************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [mysql_exporter : Start mysql-exporter111] ********************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 PLAY [Install grafana] *********************************************************
 
@@ -7422,24 +7422,24 @@ ok: [alen-1]
 PLAY [Install rsyslog] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 ok: [alen-2]
 
 TASK [rsyslog : Install rsyslog] ***********************************************
 ok: [alen-2]
-ok: [alen-3]
 ok: [alen-1]
+ok: [alen-3]
 
 TASK [rsyslog : Copy telegraf conf for rsyslog] ********************************
-ok: [alen-3]
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
+ok: [alen-3]
 
 TASK [rsyslog : Ensure that rsyslog is running] ********************************
-ok: [alen-1]
-ok: [alen-3]
 ok: [alen-2]
+ok: [alen-3]
+ok: [alen-1]
 
 PLAY [Install influxDB exporter] ***********************************************
 
@@ -7458,20 +7458,20 @@ ok: [alen-3]
 PLAY [Install haproxy] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [haproxy : Install haproxy] ***********************************************
 ok: [alen-2]
 ok: [alen-1]
 
 TASK [haproxy : Copy haproxy config] *******************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [haproxy : Install haproxy prometheus exporter] ***************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [haproxy : Move prometheus-mysqld-exporter conf] **************************
 ok: [alen-2]
@@ -7480,12 +7480,12 @@ ok: [alen-1]
 PLAY [Install keepalived] ******************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [alen-1]
 ok: [alen-2]
+ok: [alen-1]
 
 TASK [keepalived : Install keepalived] *****************************************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 TASK [keepalived : Copy keepalived file] ***************************************
 ok: [alen-2]
@@ -7508,8 +7508,8 @@ ok: [alen-2]
 ok: [alen-1]
 
 TASK [keepalived : Start and enable keepalived exporter] ***********************
-ok: [alen-2]
 ok: [alen-1]
+ok: [alen-2]
 
 PLAY RECAP *********************************************************************
 alen-1                     : ok=86   changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
@@ -7517,4 +7517,4 @@ alen-2                     : ok=78   changed=0    unreachable=0    failed=0    s
 alen-3                     : ok=75   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 + date
-Mon 13 Dec 2021 02:02:20 PM EET
+Tue 14 Dec 2021 10:21:11 AM EET
