@@ -15,10 +15,10 @@
 
   - name: Copy script
     template:
-      src: keepalivedscript
+      src: keepalivedscript.j2
       dest: /home/keepalived_script/keepalived_script
-      mode: 777
-    notify: Restart keepalived
+      owner: keepalived_script
+      mode: 0755
 
   - name: Ensure that keepalived is running
     service:
@@ -26,22 +26,29 @@
       state: started
       enabled: yes
 
-  - name: Copy keepalived exporter binary
-    copy:
-      src: keepalived_exporter
-      dest: /usr/local/bin/keepalived_exporter
-      mode: a+x
+  - name: Dowload keepalived-exporter
+    unarchive:
+      src: https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.1.0/keepalived-exporter-1.1.0.linux-amd64.tar.gz
+      dest: /usr/local/bin/
+      remote_src: yes
 
-  - name: Copy keepalived exporter service file
-    template:
-      src: keepalived_exporter.service
-      dest: /etc/systemd/system/keepalived_exporter.service
-      mode: a+x
+  - name: Сopy Keepalived-exporter
+    copy:
+      src: /usr/local/bin/keepalived-exporter-1.1.0.linux-amd64/keepalived-exporter
+      dest: /usr/local/bin/prometheus-keepalived-exporter
+      remote_src: yes
+      mode: 0755
+
+  - name: Copy conf
+    copy:
+      src: prometheus-keepalived-exporter.service
+      dest: /etc/systemd/system/prometheus-keepalived-exporter.service
     notify:
+      - Restart prometheus-keepalived-exporter
       - Reload systemd
 
   - name: Start and enable keepalived exporter
     service:
-      name: keepalived_exporter
+      name: prometheus-keepalived-exporter
       state: started
       enabled: yes

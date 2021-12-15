@@ -5,7 +5,9 @@
       state: restarted
 
   - name: Reload systemd
-    ansible.builtin.systemd:
-      name: keepalived_exporter
+    ansible.builtin.shell: systemctl daemon-reload
+
+  - name: Restart prometheus-keepalived-exporter
+    service:
+      name: prometheus-keepalived-exporter
       state: restarted
-      daemon_reload: yes

@@ -9,7 +9,7 @@ vrrp_script check_haproxy {
     interval 1
 }
 
-vrrp_instance Название {
+vrrp_instance agama {
     interface ens3
     virtual_router_id 1
     {% if inventory_hostname == 'alen-1' %}
